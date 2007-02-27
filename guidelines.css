@@ -1,13 +1,14 @@
 /* 
-** Copyright 2005 TEI Consortium
 
-$Id$
+** Copyright 2007 TEI Consortium
+
+$Id: teic.css 1890 2006-10-28 18:40:44Z rahtz $
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
 License as published by the Free Software Foundation; either
 version 2.1 of the License, or (at your option) any later version.
- This library is distributed in the hope that it will be useful,
+This library is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 Lesser General Public License for more details.
@@ -16,13 +17,90 @@ License along with this library; if not, write to the
 Free Software Foundation, Inc., 
 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
+** As currently configured, the TEI website server dynamically transforms
+** XML files into HTML, putting in a link to this stylesheet.
+
 */
 
-/* ODD */
-@import url("odd.css");
-
 /* main layout */
-
+    
+#col1 {
+   width: 20%;
+   background: #ffffff;
+   margin: 0px;
+   margin-top: 10px;
+   color: #000066;
+   padding: 5px;
+   position: absolute;
+   float: left;
+   border-style: solid;
+   border-width: 1px;
+   border-color: red
+}
+   
+#col2 {
+   background: #ffffff;
+   color: #333333;
+   border-style: solid;
+   border-width: 1px;
+   border-color: black;
+   margin: 0px;
+   margin-top: 10px;
+   padding: 5px;
+   left: 22%;
+   width: 51%;
+   position: absolute
+}
+   
+#col3 {
+   width: 24%;
+   left: 75%;
+   color: #000066;
+   background: #ffffff;
+   border-style: solid;
+   border-width: 1px;
+   border-color: red;
+   margin: 0px;
+   margin-top: 10px;
+   padding: 5px;
+   position: absolute;
+   float: right
+}
+   
+#lh-col {
+   width: 16%;
+   float: left;
+   color: black;
+   margin-right: 10pt;
+   margin-top: 0pt;
+   padding-left: 5px;
+   padding-right: 5px;
+   background-color: #ffffff;
+   float: left;
+   font-weight:normal;
+}
+   
+#rh-col {
+   background-color: #ffffff;
+   color: #333333;
+   margin: 2pt;
+   padding: 5px;
+   float: right;
+   width: 75%;
+   font-weight:normal;
+   border: solid black 1pt;
+}
+   
+.bannerright {
+   position: absolute;
+   right: 5px;
+   color: black;
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: 0.8em;
+   font-weight: bold;
+   text-decoration: none
+}
+   
 body.simple {
    color: #000000;
    background-color: #FFFFFF;
@@ -37,362 +115,292 @@ body{
 }
 
 body.pagetable {
-   color: #000000;
-   background-color: #FFFFFF;
+   background-color: #ffffcc;
+   color: black
 }
-
-/* 3 columns allowed for, or just a right and left */  
-#col1{
-   width: 20%;
-   background: #FFFFFF;
-   margin: 0;
-   margin-top: 10px;
-   color: #000066;
-   padding: 5px;
-   position : absolute;
-   float: left;
-   border-style: solid;
-   border-width: 1px;
-   border-color: red;
+   
+td.maintext p {
+   font-family: Arial,Helvetica,sans-serif
 }
-
-#col2{
-   background: #FFFFFF;
-   color: #333333;
-   border-style: solid;
-   border-width: 1px;
-   border-color: #000000;
-   margin: 0;
-   margin-top: 10px;
-   padding: 5px ;
-   left: 22%;
-   width: 51%;
-   position : absolute;
+td.maintext {
+   background-color: white;
+   font-family: Arial,Helvetica,sans-serif;
+   color: black;
+   padding-left: 6pt;
+   padding-right: 6pt
 }
-
-#col3{
-   width: 24%;
-   left: 75%;
-   color: #000066;
-   background: #FFFFFF;
-   border-style: solid;
-   border-width: 1px;
-   border-color: red;
-   margin: 0;
-   margin-top: 10px;
-   padding: 5px;
-   position : absolute;
-   float: right;
+   
+#hdr {
+   width: auto;margin: 0px;
+   padding-top: 1pt;
+   padding-bottom: 1pt;
+   border: 0px;
+   color: yellow;
+   background: url("TEI-glow.png");
+   background-repeat: no-repeat;
+   overflow: inherit
 }
-
-#lh-col{
-   width: 16%;
-   color: #000000;
-   margin-top: 2pt;
-   margin-right: 10pt;
-   padding: 5px;
-   background-color: #FFFFFF;
-   float: left;
-   font-weight:normal;
-}
-
-#rh-col{
-   background-color: #FFFFFF;
-   color: #333333;
-   margin: 2pt;
-   padding: 5px ;
-   float: right;
-   width: 75%;
-   font-weight:normal;
-}
-
-
-/* now the layers of the header */
-
-/* the main title */
-div.stdheader {
-      border-bottom: 1pt solid black;
-}
-
-#hdr{
+   
+   
+   /*navigation bar*/
+#hdr2 {
    width: auto;
-   margin: 0;
-   color: #FFFFFF;
-   background-repeat : no-repeat;
-   overflow : inherit;
+   background-color: #0082EF;
+   color: #223377;
+   font-weight: bold;
+   padding-left: 15px;
+   padding-bottom: 2px;
+   padding-top: 2px;
+   padding-right: 5px;
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: smaller;
+   border-top: solid black 1pt;
+   border-bottom: solid black 1pt
 }
-
-/* a navigation bar */
-#hdr2{
+   
+   /*breadcrumbs*/
+#hdr3 {
    width: auto;
-   color: #000000;
+   color: black;
+   background-color: white;
+   padding-left: 5px;
+   padding-bottom: 2px;
+   padding-top: 2px;
+   padding-right: 5px;
    font-family: Arial,Helvetica,sans-serif;
    font-weight: bold;
-   background-color : #99CCFF;
-   padding-left : 5px;
-   padding-bottom : 2px;
-   padding-top : 2px;
-   padding-right : 5px;
+   font-size: smaller
 }
-
-/* a breadcrumb trail */
-#hdr3{
-   width: auto;
-   color: #000000;
-   background-color : #AD06BC;
-   padding-left : 5px;
-   padding-bottom : 2px;
-   padding-top : 2px;
-   padding-right : 5px;
-   font-family: Arial,Helvetica,sans-serif;
-   font-weight : bold;
-   font-size: smaller;
-}
-
-.bannerright {
-   position : absolute;
-   right : 5px;
-   color: #FFFFFF;
-   font-family : Arial, Helvetica, sans-serif;
-   font-size : 0.8em;
-   font-weight : bold;
-   text-decoration: none;
-}
-
-/* section headings */
+   
+   
+   /*headings*/
 h1 {
    font-weight: bold;
-   font-size: 2em;
-   line-height: 34pt;
+   font-size: x-large;
+   color: #223377
 }
-
+   
+   
 h2 {
-   font-size: larger;
-   line-height: 20pt;
-   margin-top: 18pt;
+   font-size: 16pt;
+   margin-top: 20pt;
    font-weight: bold;
+   font-family: Arial,Helvetica,sans-serif;
+   color: #223377
 }
-
+   
 h3 {
    font-size: larger;
-   line-height: 18pt;
-   font-weight: bold;
-   font-style: italic;
    color: #C63904;
+   font-weight: bold;
+   font-family: Arial,Helvetica,sans-serif;
+   font-style: italic
 }
-
-
+  
+h4,h5,h6 {
+   font-size: 100%;
+   } 
+   
 h1.maintitle {
+   color: #222E44;
    margin-left: 100px;
    font-family: Arial,Helvetica,sans-serif;
    font-weight: bold;
-   bottom: 5px;
+   margin-bottom: 5px
 }
-
-h1.title {
-   margin-left: 100px;
-   font-family: Arial,Helvetica,sans-serif;
-   font-weight: bold;
-   bottom: 5px;
-}
-
-h2.institution {
-   margin-left: 100px;
-   font-family: Arial,Helvetica,sans-serif;
-}
-
-h2.department {
-   margin-left: 100px;
-   font-family: Arial,Helvetica,sans-serif;
-}
-
+   
 h2.subtitle {
+   color: #222E44;
+   margin-bottom: 15px;
    margin-left: 100px;
    font-family: Arial,Helvetica,sans-serif;
-   font-weight: bold;
+   font-weight: bold
+   
 }
-
-.footer {
-   text-align : center;
-   font-family: Arial,Helvetica,sans-serif; 
-   font-size : 0.8em;
-}
-
-
-
-/* components of the breadcrumb trail */
-a.breadcrumb{
-   color: #FFFFFF;
-   text-decoration: none;
-   padding-right : 5px;
+.skiplinks {
    font-family: Arial,Helvetica,sans-serif;
-   font-weight : bold;
-   font-size : 0.8em;
-}
-
-ul.breadcrumb
-{
-   display: inline;
-   font-size: 1.1em;
-}
-
-li.breadcrumb
-{
-   padding-left: 12px;
-   padding-right: 5px;
-   display: inline;
-   color: #000000;
-   background: url(/images/rightarrow.gif);
-   background-repeat: no-repeat;
-   background-position: left;
-}
-li.breadcrumb-first
-{
-   padding-left: 12px;
-   padding-right: 5px;
-   display: inline;
-   color: #000000;
-   background: url(/images/rightarrow.gif);
-   background-repeat: no-repeat;
-   background-position: left;
-}
-
-div.breadcrumb {
-   display: inline;
-}
-
-.skiplinks{
-   font-family: arial, sans-serif;
-   color: #FFFFFF;
-   font-weight : bold;
-   font-size : 0.8em;
+   color: black;
+   font-weight: bold;
+   font-size: 0.8em;
    text-decoration: none;
-   padding-right : 15px;
+   padding-right: 15px
 }
-
-.tocontent{
-   color : #000066;
-   display : none;
+a.skiplinks {
+   font-family: Arial,Helvetica,sans-serif;
+   color: black;
+   font-weight: bold;
+   font-size: 0.8em;
+   text-decoration: none;
+   padding-right: 15px
 }
-
-.hide{
-   display : none;
+   
+.footer {
+   text-align: center;
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: 0.8em
 }
-
+   
+.hide {
+   display: none
+}
+   
+.tocontent {
+   color: #000066;
+   display: none
+}
+   
 .framestdlink {
    color: red;
    font-size: smaller;
+   font-weight: bold
+}
+   
+   /*linking of all kinds*/
+   
+a.breadcrumb {
+   color: black;
+   text-decoration: none;
+   padding-right: 5px
+}
+   
+ul.breadcrumb {
+   display: inline;
+   font-size: 1.1em
+}
+   
+li.breadcrumb  {
+   padding-left: 12px;
+   padding-right: 5px;
+   display: inline;
+   color: #000;
+   background: url("/images/rightarrow.gif");
+   background-repeat: no-repeat;
+   background-position: left
+}
+   
+li.breadcrumb-first  {
+   padding-left: 12px;
+   padding-right: 5px;
+   display: inline;
+   color: #000;
+   background: url("/images/rightarrow.gif");
+   background-repeat: no-repeat;
+   background-position: left
+}
+   
+   
+a.framestdlink {
+   font-size: small;
    font-weight: bold;
-}
-
-a:hover
-{
-   text-decoration: underline;
-}
-
-a.navbar:link
-{
-   color: #FFFFFF;
    text-decoration: none;
+   font-family: Arial,Helvetica,sans-serif
 }
-
-a.navbar:visited
-{
-   color: #FFFFFF;
-   text-decoration: none;
+   
+   
+a:hover {
+   text-decoration: underline
 }
-
+   
+   
+a.navbar:link {
+   color: white;
+   text-decoration: none
+}
+   
+a.navbar:visited {
+   color: white;
+   text-decoration: none
+}
+   
 a.navbar:hover {
-   color: #FFFFFF;
-   text-decoration: underline;
+   color: white;
+   text-decoration: underline
 }
-
-
-/* for use when making pages using a table */
-td.hdr2 {
-   color: #000000;
-   background-color : #99CCFF;
+   
+   a.inlinetoc:link,
+a.inlinetoc:visited {
+   color: #7a7a7a;
+   font-size: smaller;
+   text-decoration: none
 }
-td.hdr3 {
-   background-color : #AD06BC;
-   border: 1pt solid #000000;
+   
+a.inlinetoc:hover {
+   color: #7a7a7a;
+   font-size: smaller;
+   text-decoration: underline
 }
-
-td.sidetext {
-   border-right: 1pt solid #000000;
+   
+a.inlinetoc-this:visited,a.inlinetoc-this:link {
+   font-size: smaller;
+   color: black;
+   font-weight: bold;
+   text-decoration: underline
 }
-td.maintext p {
+   
+a.inlinetoc-sub:visited,a.inlinetoc-sub:link {
+   text-decoration: none;
+   color: black;
+   font-weight: normal;
+   font-size: smaller
+}
+   
+/*misc*/
+.plain {
+   font-weight: bold;
+   text-decoration: none;
+   font-size: 100%;
    font-family: Arial,Helvetica,sans-serif;
+   color: #C63904
 }
-
-td.maintext {
-   background-color: #FFFFFF;
+   
+.small {
+   font-size: 8pt;
    font-family: Arial,Helvetica,sans-serif;
-   color: #000000;
-   padding-left: 6pt;
-   padding-right: 6pt;
+   color: #9F9F9F
+}
+   
+.label {
+ font-weight: bold;
+}
+   
+tr.label td {
+ font-weight: bold;
+ background-color: #AAAAAA
+}
+  
+   
+div.inlinteoc {
+ color: #7a7a7a;
+ text-align: center;
+ margin-top: 10pt;
+ padding-right: 16pt;
+ padding-left: 16pt
 }
 
-table.wovenodd td,p.wovenodd {
-   background-color: #FFFFFF;
-}
-
-/* an inner <text>, eg inside a <q> */
-div.innertext {
-   margin: 6pt;
-   border: 1pt solid red;
-}
-/* literal code */
-
-div.pre,pre	{ 
+div.pre,pre	{
+ padding: 2pt; 
  background-color: #FFFFCC;  
  font-family: monospace ;
- margin: 5px;
+ margin-bottom: 4pt;
 }
 
-div.pre_eg,pre.eg {
- margin: 5px;
+div.pre_eg,pre.eg,div.eg {
  padding: 2pt;
  font-family: monospace ;
- background-color: #DDDDDD;
+ background-color: #f0d7d7;
+ margin-bottom: 4pt;
+}
+span.element {
+ font-weight: bold;
+ color: black;
+}
+
+span.attribute {
+    color: black;
 }
 
 
-/* table of contents */
-ul.toc {list-style: none;}
-li.toc {list-style: none;}
-
-/* table of contents links */
-
-a.inlinetoc:link,a.inlinetoc:visited
-{
-   color: #7A7A7A;
-   font-size: smaller; 
-   text-decoration: none;
-}
-
-a.inlinetoc-this:visited,a.inlinetoc-this:link
-{   
-   font-size: smaller; 
-   color: #000000;
-   font-weight: bold; 
-   text-decoration: underline;
-}
-
-a.inlinetoc-sub:visited,a.inlinetoc-sub:link
-{
-   text-decoration: none;
-   color: #000000;
-   font-weight: normal;
-   font-size: smaller; 
-}
-
-span.toclist{
-   font-size: smaller; 
-   font-family: Arial,Helvetica,sans-serif;
-   font-weight: bold;
-}
-
+/* toc */
 p.toclist0 {
    margin-left: 0.5em; 
    margin-top: 1pt; 
@@ -400,6 +408,8 @@ p.toclist0 {
    text-indent: -0.5em;
    font-size: small;    
 }
+p.toclist0 a.toclist { color: gray ; }
+p.toclist0 a.toclist:hover { color: black ; }
 
 p.toclist1 {
    margin-left: 1em; 
@@ -422,7 +432,8 @@ p.toclist3 {
 }
 
 span.toclist-this {
-   color: red;
+       color: black; 
+       font-weight: bold 
 }
 
 a.toclist:visited,a.toclist:link
@@ -431,6 +442,7 @@ a.toclist:visited,a.toclist:link
    color: #000000;
    text-decoration: none;
 }
+
 
 
 
@@ -573,16 +585,6 @@ tr.label td {
    background-color: #AAAAAA;
 }
 
-h5 {    
-   font-size: 100%;
-}
-h5 {    
-   font-size: 100%;
-}
-h6 {    
-   font-size: 100%;
-}
-
 div.tocFront {
    border-bottom: 1pt solid #000000;
 }
@@ -608,3 +610,4 @@ dt {
 div.blockquote {
    margin: 10pt;
 }
+
