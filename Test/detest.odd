@@ -55,10 +55,16 @@
       xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.duration"/></datatype>
       <valDesc/>
     </attDef>
-    <attDef ident="enumerated">
-	<desc>enumerated</desc>      
+    <attDef ident="selection">
+	<desc>selection</desc>      
       <datatype><rng:ref
-      xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
+      <valDesc/>
+    </attDef>
+    <attDef ident="selections">
+	<desc>selections</desc>      
+      <datatype><rng:ref
+      xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selections"/></datatype>
       <valDesc/>
     </attDef>
 
