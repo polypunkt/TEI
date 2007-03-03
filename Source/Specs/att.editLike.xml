@@ -11,7 +11,7 @@ $Author$
 	<equiv/>
 	<desc>signifies the degree of certainty associated with the
 	intervention or interpretation.</desc><desc version="2006-10-28" xml:lang="ja">当該解釈や調整の確信度を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
 <valList>
 <valItem ident="high"><gloss>a high degree of certainty is associated
 with the encoded intervention.</gloss></valItem>
@@ -34,7 +34,7 @@ appropriateness of the intervention</gloss></valItem>
 	<desc>indicates the nature of the evidence supporting the reliability or
   accuracy of the intervention or interpretation.</desc><desc version="2006-10-28" xml:lang="ja">当該解釈や調整の信頼度や正確さを判断する証拠を示す．</desc>
 	<datatype>
-	  <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/>
+	  <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/>
 	</datatype>
       <valList type="open">
         <valItem ident="internal">

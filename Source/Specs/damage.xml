@@ -19,7 +19,7 @@ $Author$
     <attDef ident="type" usage="opt">
 	<equiv/>
 	<desc>classifies the damage according to any convenient typology.</desc><desc version="2006-10-28" xml:lang="ja">当該損傷の種類を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>any phrase describing the damage, e.g. <mentioned>faded</mentioned>,
 <mentioned>overbound</mentioned>, <mentioned>water</mentioned>, <mentioned>charred with loss of paper</mentioned>.</valDesc>
       <exemplum>
@@ -68,7 +68,7 @@ header (see section <ptr target="#PHDH"/>).</valDesc>
     <attDef ident="agent" usage="opt">
 	<equiv/>
 	<desc>categorizes the cause of the damage, if it can be identified.</desc><desc version="2006-10-28" xml:lang="ja">当該損傷の原因の分類を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
 <valList type="open">
   <valItem ident="rubbing"><gloss>damage results from rubbing of the
   leaf edges</gloss></valItem>

@@ -32,7 +32,7 @@ or back matter. </desc><desc version="2006-10-28" xml:lang="ja"> テキストの
     <attDef ident="type" usage="opt">
 	<equiv/>
 	<desc>classifies the title page according to any convenient typology.</desc><desc version="2006-10-28" xml:lang="ja">当該タイトルページの分類を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>Any string, e.g. <mentioned>full</mentioned>, <mentioned>half</mentioned>, <mentioned>Series</mentioned>, etc.</valDesc>
       <remarks>
         <p>This attribute allows the same element to be used for

@@ -32,7 +32,7 @@ some other location in this or another text.</desc><desc version="2006-10-28" xm
 	<equiv/>
 	<desc>indicates the type of cross reference, using any convenient
 typology.</desc><desc version="2006-10-28" xml:lang="ja">当該相互参照の分類を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valList type="open">
         <valItem ident="syn">
           <equiv/>

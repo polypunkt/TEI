@@ -13,7 +13,7 @@ $Author$
     <attDef ident="type" usage="opt">
 	<equiv/>
 	<desc>characterizes the type of segment.</desc><desc version="2006-10-28" xml:lang="ja">分割の種類を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>For a <gi>cl</gi> may take values such as finite, nonfinite,
 declarative, interrogative, relative etc. For a <gi>phr</gi> or
 <gi>w</gi>, values such as noun, verb, preposition, etc., may be used. For
@@ -24,7 +24,7 @@ digit may be used.</valDesc>
     <attDef ident="function" usage="opt">
 	<equiv/>
 	<desc>characterizes the function of the segment.</desc><desc version="2006-10-28" xml:lang="ja">分割の役割を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>For a <gi>cl</gi>, may take values such as
 coordinate, subject, adverbial etc. For a <gi>phr</gi>, such values as
 subject, predicate etc. may be more appropriate.</valDesc>

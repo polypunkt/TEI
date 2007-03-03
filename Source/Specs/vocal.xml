@@ -56,7 +56,7 @@ voiced pauses, non-lexical backchannels, etc.</desc><desc version="2006-10-28" x
 	<equiv/>
 	<desc>supplies a conventional representation for the phenomenon.
     </desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>a description or representation of the phenomenon
         chosen from a semi-closed list</valDesc>
       <remarks/>

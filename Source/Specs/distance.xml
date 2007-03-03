@@ -28,7 +28,7 @@ time referred to within it.</desc><desc version="2006-10-28" xml:lang="ja"> 当�
 	<desc>indicates the degree
 of accuracy associated with the
 distance.</desc><desc version="2006-10-28" xml:lang="ja">当該値の正確度を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <defaultVal>unknown</defaultVal>
       <valList type="closed">
         <valItem ident="true">

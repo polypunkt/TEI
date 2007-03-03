@@ -25,7 +25,7 @@ $Author$
     <attDef ident="type" usage="req">
 	<equiv/>
 	<desc>gives a name for the type of feature structure being declared.</desc><desc version="2006-10-28" xml:lang="ja">当該素性構造の種類を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>any convenient string of characters.</valDesc>
       <exemplum>
         <egXML xmlns="http://www.tei-c.org/ns/Examples"/>

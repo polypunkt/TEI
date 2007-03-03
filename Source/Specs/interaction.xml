@@ -46,7 +46,7 @@ form of response or interjection, commentary etc.</desc><desc version="2006-10-2
 	<equiv/>
 	<desc>specifies the number of active participants
    (or <term>addressors</term>) producing parts of the text. </desc><desc version="2006-10-28" xml:lang="ja">言語交流に直接参加している人数．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valList type="semi">
         <valItem ident="singular">
           <equiv/>
@@ -72,7 +72,7 @@ form of response or interjection, commentary etc.</desc><desc version="2006-10-2
    (or <term>addressees</term>) to whom a text is directed
    or in whose presence it is created or performed.
    </desc><desc version="2006-10-28" xml:lang="ja">言語交流に間接的に参加している人数．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valList type="semi">
         <valItem ident="self">
           <equiv/>

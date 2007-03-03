@@ -18,7 +18,7 @@ $Author$
   </content>
   
   <exemplum><egXML xmlns="http://www.tei-c.org/ns/Examples"><datatype><rng:text/></datatype>
-<datatype><rng:ref name="data.enumerated"/> </datatype>
+<datatype><rng:ref name="data.selection"/> </datatype>
 </egXML>
   </exemplum>
 <remarks><p>In the TEI scheme, most datatypes are expressed using

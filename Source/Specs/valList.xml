@@ -19,7 +19,7 @@ $Author$
 	<equiv/>
 	<desc>specifies the effect of this declaration on its parent
     module.</desc><desc version="2006-10-28" xml:lang="ja">当該宣言が親要素に与える影響を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <defaultVal>add</defaultVal>
       <valList type="closed">
 	<valItem ident="add">
@@ -61,6 +61,17 @@ $Author$
           <gloss>the values specified are sample values only.</gloss><gloss version="2006-10-28" xml:lang="ja">(当該リスト中の値以外も認める．)</gloss>
         </valItem>
       </valList>
+    </attDef>
+    <attDef ident="repeatable">
+      <desc>specifies whether only a single member from the list must be selected, or more than one is permitted</desc>
+      <datatype xmlns:rng="http://relaxng.org/ns/structure/1.0"><rng:ref name="data.truthValue"/></datatype>
+      <defaultVal>false</defaultVal>
+      <valDesc>The value <val>true</val> indicates that more than one
+      value from the list may be specified, separated by whitespace.
+      Repititions of a particular value are syntactically permitted,
+      but are typically meaningless. The value <val>false</val> is the
+      default, and indicates that only a single value from the list
+      may be specified.</valDesc>
     </attDef>
   </attList>
   <exemplum>

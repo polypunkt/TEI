@@ -20,7 +20,7 @@ screen play or radio script.</desc><desc version="2006-10-28" xml:lang="ja">音�
 	<equiv/>
 	<desc>categorizes the sound in some respect, e.g. as music, special
 effect, etc.</desc><desc version="2006-10-28" xml:lang="ja">当該音響効果の分類を示す．例えば，音楽，特殊効果音など．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>any string of characters</valDesc>
     </attDef>
     <attDef ident="discrete" usage="opt">

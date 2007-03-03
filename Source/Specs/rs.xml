@@ -22,7 +22,7 @@ $Author$
       referencing string. Values might include <q>person</q>,
       <q>place</q>, <q>ship</q>, <q>element</q> etc.</desc><desc version="2006-06-05" xml:lang="zh-tw">更詳細指明參照字串所表示的對象。屬性值可包含<q>人物</q>、<q>地點</q>、<q>船</q>、<q>元素</q>等。</desc><desc version="2006-10-28" xml:lang="ja">当該文字列がによって参照される対象をより具体的に示す情報．例えば，
 人名，地名，船名，要素名など．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>Any string of characters.</valDesc>
     </attDef>
   </attList>

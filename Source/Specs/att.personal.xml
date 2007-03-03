@@ -37,7 +37,7 @@ such as a database record key.</desc>
 	<desc>provides more culture- linguistic- or application- specific
 information used to categorize this name component.</desc><desc version="2006-10-28" xml:lang="ja">当該名前要素を分類するための情報，例えば，文化的，言語的，使用状況な
 どについて示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>one of a set of codes defined for the application.</valDesc>
     </attDef>
     <attDef ident="full" usage="opt">

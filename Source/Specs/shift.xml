@@ -69,7 +69,7 @@ paralinguistic feature.</desc><desc version="2006-10-28" xml:lang="ja">同時的
     <attDef ident="new" usage="opt">
 	<equiv/>
 	<desc>specifies the new state of the paralinguistic feature specified.</desc><desc version="2006-10-28" xml:lang="ja">同時的な言語的要素の，交代後の新しい状態を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <defaultVal>normal</defaultVal>
       <valDesc>An open list (for an example of possible values, see
       <ptr target="#TSSAPA"/>)</valDesc>

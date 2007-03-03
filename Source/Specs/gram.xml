@@ -24,7 +24,7 @@ $Author$
                 data element types specified in ISO WD 12 620.</desc><desc version="2006-10-28" xml:lang="ja">当該文法情報の分類を示す．用語を示す場合，ISO WD 12 620に従うこと
 が望ましい．</desc>
             <datatype>
-	      <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/>
+	      <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/>
             </datatype>
             <valList type="open">
                 <valItem ident="pos">

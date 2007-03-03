@@ -38,7 +38,7 @@ $Author$
       <gloss/>
       <desc>a short project-defined name for the material composing
       the majority of the support</desc><desc version="2006-10-28" xml:lang="ja">当該資料の中心となる材料を，プロジェクト内で識別可能な名前で示す．</desc>
-      <datatype><rng:ref name="data.enumerated"/></datatype>
+      <datatype><rng:ref name="data.selection"/></datatype>
       <valList>
         <valItem ident="paper">
           <equiv/>

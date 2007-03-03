@@ -35,7 +35,7 @@ $Author$
       the carrier, for example as a codex, roll, fragment, partial leaf,
       cutting etc.</desc><desc version="2006-10-28" xml:lang="ja">当該媒体の物理的な情報を，当該プロジェクトで使われる名前で示す．
 例えば，冊子，巻子，断片，一切れ，断片など．</desc>
-      <datatype><rng:ref name="data.enumerated"/></datatype>
+      <datatype><rng:ref name="data.selection"/></datatype>
       <valDesc>a short project-defined name</valDesc>
     </attDef>
   </attList>

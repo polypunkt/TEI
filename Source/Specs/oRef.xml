@@ -21,7 +21,7 @@ $Author$
 	<equiv/>
 	<desc>indicates the kind of typographic modification made to the headword in the reference.</desc><desc version="2006-10-28" xml:lang="ja">当該見出し語参照の種類を示す．</desc>
             <datatype>
-	      <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/>
+	      <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/>
             </datatype>
             <valList type="open">
                 <valItem ident="cap">

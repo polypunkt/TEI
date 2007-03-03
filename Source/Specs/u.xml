@@ -57,7 +57,7 @@ silence or by a change of speaker.</desc><desc version="2006-10-28" xml:lang="ja
 	<desc>supplies an identifier for the speaker or group of speakers.
          Its value is the identifier of a <tag>participant</tag>
          or <tag>participantGrp</tag> element in the TEI header.</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>Must identify a participant or participant group within the
         TEI Header</valDesc>
     </attDef>-->

@@ -26,7 +26,7 @@ $Author: $
 線や，間違った追記，例えば同じテキストを重複して挿入してあるもの
 を示すためのもの．</desc>
       <datatype>
-	<rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/>
+	<rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/>
       </datatype>
       <defaultVal>unremarkable</defaultVal>
 <!--      <valDesc>any description of flaws in the marking of a deletion, e.g.
@@ -81,7 +81,7 @@ $Author: $
     <attDef ident="type" usage="opt">
       <desc>classifies the type of addition or deletion using any convenient typology.</desc><desc version="2006-10-28" xml:lang="ja">追加・削除の種類．</desc>
       <datatype>
-	<rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/>
+	<rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/>
       </datatype>
       <valDesc>a string identifying the class of addition or deletion.</valDesc>
       <remarks>

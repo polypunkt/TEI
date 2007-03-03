@@ -12,7 +12,7 @@ $Author$
 	<equiv/>
 	<desc>indicates type of entry, in dictionaries with multiple types.</desc><desc version="2006-10-28" xml:lang="ja">辞書項目の種類を示す．</desc>
             <datatype>
-	      <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/>
+	      <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/>
             </datatype>
             <defaultVal>main</defaultVal>
             <valList type="semi">

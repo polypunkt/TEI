@@ -29,7 +29,7 @@ Encoding Declarations section of the header.</valDesc>
 	<desc>specifies the unit of time in which the  <att>interval</att>
 value is expressed, if this is not inherited from the parent <gi>timeLine</gi>.</desc><desc version="2006-10-28" xml:lang="ja">当該時点で使用される時間幅の単位を示す．指定がない場合は，要素
 timelineの値を継承する．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valList type="semi">
 <valItem ident="s"><gloss>seconds</gloss></valItem>
 <valItem ident="ms"><gloss>milliseconds</gloss></valItem>

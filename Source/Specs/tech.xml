@@ -42,7 +42,7 @@ meant for the actors.</desc><desc version="2006-10-28" xml:lang="ja">役者以�
 	<equiv/>
 	<desc>identifies the performance or performances to which this
 technical direction applies.</desc><desc version="2006-10-28" xml:lang="ja">当該指示の対象となる演技を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>The IDREFS are derived from the <att>xml:id</att> attribute on a <gi>performance</gi> element.</valDesc>
     </attDef>
   </attList>

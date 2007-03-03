@@ -21,7 +21,7 @@ $Author$
 	<equiv/>
 	<desc>gives the type of spelling.</desc><desc version="2006-10-28" xml:lang="ja">当該綴りの種類を示す．</desc>
             <datatype>
-                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/>
+                <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/>
             </datatype>
             <valDesc>Any convenient word or phrase, e.g. <mentioned>lat</mentioned>
                 (latinate),<mentioned>std</mentioned> (standard), <mentioned>trans</mentioned>
@@ -37,7 +37,7 @@ $Author$
 	<equiv/>
 	<desc>gives the extent of the orthographic information provided.</desc><desc version="2006-10-28" xml:lang="ja">当該正書法があてはまっている程度を示す．</desc>
             <datatype>
-	      <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/>
+	      <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/>
             </datatype>
             <defaultVal>full</defaultVal>
             <valList type="open">

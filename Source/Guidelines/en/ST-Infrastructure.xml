@@ -677,7 +677,8 @@ different name, as follows:
 <specDesc key="data.words"/>
 <specDesc key="data.name"/>
 <specDesc key="data.names"/>
-<specDesc key="data.enumerated"/>
+<specDesc key="data.selection"/>
+<specDesc key="data.selections"/>
 <specDesc key="data.code"/>
 </specList>
 </p>
@@ -713,12 +714,7 @@ identifiers include <val>cholmondeley</val>, <val>été</val>,
 wazoo</val> or <val>1234</val>. Attributes of this kind are typically used to
 represent XML element or attribute names.</p>
 
-<p xmlns="http://www.tei-c.org/ns/1.0">Corresponding with these two datatypes, the TEI provides
-<soCalled>list</soCalled>-valued datatypes <ident type="datatype">data.words</ident>
-and <ident type="datatype">data.names</ident>. These may be used to supply a list of
-words or names (as defined above), each being separated by a single space. </p>
-
-<p xmlns="http://www.tei-c.org/ns/1.0">Attributes of type <ident type="datatype">data.enumerated</ident>, such as
+<p xmlns="http://www.tei-c.org/ns/1.0">Attributes of type <ident type="datatype">data.selection</ident>, such as
 <att>anchored</att> on <gi>note</gi> have the same definition as
 <ident type="datatype">data.word</ident> above, with the added semantics that the word
 supplied is taken from a specific list of possibilities. In each case,
@@ -728,23 +724,32 @@ with a prose description of their intended significance. This list may
 be open (in which case the list is advisory), or closed (in which
 case, it determines the range of legal values).</p>
 
-<p xmlns="http://www.tei-c.org/ns/1.0">Attributes of type <ident type="datatype">data.code</ident> such as <att>new</att>
-and <att>old</att> on <gi>handShift</gi> are similar in function, in
-that they also supply encoded names for values which are defined in
-more detail elsewhere. In this case, however, the full definition is
-supplied as content of another XML element, typically but not
-necessarily in the same document, and it is referenced by means of a
-pointer. </p>
+<p xmlns="http://www.tei-c.org/ns/1.0">Corresponding with these three
+datatypes, the TEI provides <soCalled>list</soCalled>-valued datatypes
+<ident type="datatype">data.words</ident>, <ident
+type="datatype">data.names</ident>, and <ident
+type="datatype">data.selections</ident>. These may be used to supply a
+whitespace-separated list of words or names (as defined above).</p>
+
+<p xmlns="http://www.tei-c.org/ns/1.0">Attributes of type <ident
+type="datatype">data.code</ident> such as <att>new</att> and
+<att>old</att> on <gi>handShift</gi> are similar in function to those
+of type <ident type="datatype">data.selection</ident>, in that they
+supply encoded names for values which are defined in more detail
+elsewhere. In this case, however, the full definition is supplied as
+content of another XML element, typically but not necessarily in the
+same document, and it is referenced by means of a pointer.</p>
 
 <p xmlns="http://www.tei-c.org/ns/1.0">Here are the specifications for these datatypes:
 <specGrp xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns="http://www.tei-c.org/ns/1.0" xml:id="DTYPES-4" n="Coded value datatypes">
 &data.code;
-&data.enumerated;
 &data.key;
 &data.word;
-&data.names;
 &data.words;
 &data.name;
+&data.names;
+&data.selection;
+&data.selections;
 </specGrp>
 </p>
 </div>
@@ -905,7 +910,7 @@ name.content = macro.phraseSeq
 name.attributes =
   att.global.attributes,
   att.naming.attributes,
-  attribute type { data.enumerated }?,
+  attribute type { data.selection }?,
   empty
 </eg></p>
  
@@ -950,7 +955,7 @@ example, the parameter entity corresponding with the <ident type="class">att.div
 follows:
 <egXML xmlns="http://www.tei-c.org/ns/Examples"><![CDATA[<!ENTITY % att.divlike.attributes '
 	%att.metrical.attributes;
- type  %data.enumerated;  #IMPLIED
+ type  %data.selection;  #IMPLIED
  org  (composite|uniform) "uniform" 
  sample  (initial|medial|final|unknown|complete) "complete" 
  part  (Y|N|I|M|F) "N" '> 

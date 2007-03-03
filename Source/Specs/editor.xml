@@ -24,7 +24,7 @@ translator, etc. </desc><desc version="2006-06-05" xml:lang="zh-tw">書目項目
     <attDef ident="role" usage="opt">
 	<equiv/>
 	<desc>specifies the nature of the intellectual responsibility</desc><desc version="2006-06-05" xml:lang="zh-tw">說明智慧責任的種類</desc><desc version="2006-10-28" xml:lang="ja">知的責任の性質</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <defaultVal>editor</defaultVal>
       <valDesc>semi-open list (examples might include: translator, editor,
         compiler, illustrator, etc.)</valDesc>

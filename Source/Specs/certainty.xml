@@ -41,7 +41,7 @@ of this indirect pointing mechanism, see chapter <ptr target="#SA"/>.</p>
 	<desc>indicates the precise location of the uncertainty in the
 markup: applicability of the element, precise position of the
 start- or end-tag, value of a specific attribute, etc.</desc><desc version="2006-10-28" xml:lang="ja">当該確信度が指定要素の何についてのことかを示す．</desc>
-      <datatype><rng:ref name="data.enumerated"/></datatype>
+      <datatype><rng:ref name="data.selection"/></datatype>
       <valList type="semi">
         <valItem ident="gi">
           <equiv/>
@@ -123,7 +123,7 @@ element.</p>
 	<desc>further describes the uncertainty in prose, perhaps
 indicating its nature, cause, or the justification for the
 degree of confidence asserted.</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>a prose description of how and why the markup is
 uncertain.</valDesc>
       <exemplum>

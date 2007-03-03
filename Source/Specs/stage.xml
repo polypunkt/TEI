@@ -19,7 +19,7 @@ fragment.</desc><desc version="2006-10-28" xml:lang="ja"> 舞台関連の文章�
     <attDef ident="type" usage="rec">
 	<equiv/>
 	<desc>indicates the kind of stage direction.</desc><desc version="2006-10-28" xml:lang="ja">舞台指示の種類．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valList type="semi">
         <valItem ident="setting">
           <equiv/>

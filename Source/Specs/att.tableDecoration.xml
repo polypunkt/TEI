@@ -9,7 +9,7 @@ See the file COPYING for details
 	<equiv/>
 	<desc>indicates the kind of information held in this cell or
 in each cell of this row.</desc><desc version="2006-10-28" xml:lang="ja">当該セル，または当該列の各セルにある情報の種類を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <defaultVal>data</defaultVal>
       <valList type="semi">
         <valItem ident="label">

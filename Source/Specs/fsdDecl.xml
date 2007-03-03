@@ -27,7 +27,7 @@ this will be the value of the <att>type</att> attribute on at least one
 feature structure.</desc><desc version="2006-10-28" xml:lang="ja">当該FSDのタイプを示す．</desc>
       <desc xml:lang="fr">identifie le type de structure de profils décrit dans la déclaration de systèmes de profils ; ce sera la valeur de l’attribut <att>type</att> d’au moins une structure de profils.</desc>
       <datatype>
-        <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/>
+        <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/>
       </datatype>
       <valDesc>any string of characters.</valDesc>
       <exemplum>

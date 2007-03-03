@@ -21,7 +21,7 @@ $Author$
     <attDef ident="type" usage="opt">
 	<equiv/>
 	<desc>describes the type of note.</desc><desc version="2006-10-28" xml:lang="ja">注釈・コメントの種類．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>Values can be taken from any convenient typology of annotation
 suitable to the work in hand;  e.g. annotation, gloss, citation,
 digression, preliminary, temporary</valDesc>
@@ -47,7 +47,7 @@ digression, preliminary, temporary</valDesc>
 	<equiv/>
 	<desc>indicates whether the copy text shows the exact place of reference
 for the note.</desc><desc version="2006-10-28" xml:lang="ja">当該注釈がある場所への参照は，正確にその場所を示しているかどうか．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <defaultVal>true</defaultVal>
       <valList type="closed">
         <valItem ident="true">

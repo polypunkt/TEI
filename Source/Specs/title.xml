@@ -70,7 +70,7 @@ when <gi>title</gi> is directly enclosed by <gi>series</gi>,
     <attDef ident="type" usage="opt">
 	<equiv/>
 	<desc>classifies the title according to some convenient typology.</desc><desc version="2006-06-05" xml:lang="zh-tw">用合宜的分類方法將題名分類。</desc><desc version="2006-10-28" xml:lang="ja">当該題名の分類．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valList type="open">
         <valItem ident="main">
           <equiv/>

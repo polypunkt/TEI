@@ -28,7 +28,7 @@ bibliographic item.</desc><desc version="2006-10-28" xml:lang="ja"> 書誌情報
    </desc><desc version="2006-10-28" xml:lang="ja">当該IDの分類を示す．例えば，ISBNなど．</desc>
       <desc xml:lang="fr">identifie le numéro, par exemple comme étant un ISBN ou tout autre numéro normalisé.</desc>
       <datatype>
-        <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/>
+        <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/>
       </datatype>
       <valDesc>A name or abbreviation indicating what type of identifying
          number is given (e.g. ISBN, LCCN).</valDesc>

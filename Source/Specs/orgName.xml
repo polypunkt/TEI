@@ -32,7 +32,7 @@ $Author$
       <q>political</q>, <q>governmental</q>, <q>industrial</q>,
       <q>commercial</q>, etc.</desc><desc version="2006-10-28" xml:lang="ja">組織の名前にある組織についての詳細を示す．例えば，ボランティア組織，
 政治組織，政府組織，生産組織，販売組織など．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc/>
     </attDef>
     <attDef ident="key" usage="opt">

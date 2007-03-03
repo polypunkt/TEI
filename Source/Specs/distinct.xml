@@ -25,7 +25,7 @@ preferidas, etc., o como parte de un sublenguaje.
 	<equiv/>
 	<desc>specifies the sublanguage or register to which the word or phrase
 is being assigned</desc><desc version="2006-10-28" xml:lang="ja">当該文字・語彙の分類．特殊言語など．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>a semi-open user-defined list</valDesc>
     </attDef>
     <attDef ident="time" usage="opt">

@@ -67,7 +67,7 @@ crítico, con un lema opcional y por lo menos una lectura.
 	<equiv/>
 	<desc>classifies the variation contained in this element according to
 some convenient typology.</desc><desc version="2006-10-28" xml:lang="ja">当該資料の分類を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>Any convenient descriptive word or phrase, describing the
 extent of the variation (e.g.  <mentioned>word</mentioned>, <mentioned>phrase</mentioned>,
 <mentioned>punctuation</mentioned>, etc.) its text-critical significance (e.g.

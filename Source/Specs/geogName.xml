@@ -31,7 +31,7 @@ $Author$
       specific information used to categorize this name
       component.</desc><desc version="2006-10-28" xml:lang="ja">当該名前を分類するための，文化的，言語的，使用環境に関する情報を示す．</desc>
       <datatype>
-	<rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/>
+	<rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/>
       </datatype>
       <valDesc>one of a set of codes defined for the application.</valDesc>
     </attDef>

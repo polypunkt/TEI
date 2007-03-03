@@ -27,7 +27,7 @@ group of participants.</desc><desc version="2006-10-28" xml:lang="ja"> 参加者
 	<equiv/>
 	<desc>categorizes the relationship in some respect, e.g.
 as social, personal or other.</desc><desc version="2006-10-28" xml:lang="ja">当該関係の分類を示す．例えば，社会的，個人的関係など．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <defaultVal>personal</defaultVal>
       <valList type="semi">
         <valItem ident="social">
@@ -49,7 +49,7 @@ kinship, marriage, etc.</gloss>
 	<equiv/>
 	<desc>supplies a name for the kind of  relationship of which
 	this is an instance.</desc><desc version="2006-10-28" xml:lang="ja">当該関係の名前を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>an open list of application-dependent keywords</valDesc>
     </attDef>
 

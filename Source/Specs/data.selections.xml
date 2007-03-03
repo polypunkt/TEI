@@ -1,0 +1,23 @@
+<!--Copyright 2005 TEI Consortium. 
+Licensed under the GNU General Public License. 
+See the file COPYING for details
+$Date: 2006-10-28 01:56:06 -0400 (Sat, 28 Oct 2006) $
+$Author: rahtz $
+-->
+<macroSpec xmlns="http://www.tei-c.org/ns/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" module="tei" type="dt" ident="data.selections">
+  <gloss/>
+  <desc>defines the range of attribute values expressed as one or more
+  words or tokens selected from a list of documented
+  possibilities</desc>
+  <content>
+    <rng:data type="token"/>
+  </content>
+  <remarks>
+    <p>Typically, the list of documented possibilities will be
+    provided (or exemplified) by a value list in the associated
+    element specification. The value list should be encoded using the
+    <gi>valList</gi> element. In order to indicate that more than one
+    value may be used, the <att>repeatable</att> attribute should be
+    specified as <val>true</val>. See <ptr target="#TDATT"/>.</p>
+  </remarks>
+</macroSpec>

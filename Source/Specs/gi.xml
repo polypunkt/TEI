@@ -18,7 +18,7 @@ $Author$
     <attDef ident="scheme" usage="opt">
 	<equiv/>
 	<desc>supplies the name of the scheme in which this name is defined.</desc><desc version="2006-10-28" xml:lang="ja">当該共通識別子が定義されているスキーム名を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <defaultVal>TEI</defaultVal>
       <valList type="open">
         <valItem ident="TEI">

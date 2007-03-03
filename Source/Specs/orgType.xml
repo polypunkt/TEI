@@ -18,7 +18,7 @@ information about the organization's structure or function.</desc><desc version=
 	<desc>more fully describes the organization type specified in the name
 component.  Possible values include <q>function</q>, <q>structure</q>,
 etc.</desc><desc version="2006-10-28" xml:lang="ja">当該組織についての詳細を示す．例えば，機能，構造など．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>any string of characters</valDesc>
     </attDef>
     <attDef ident="reg" usage="opt">

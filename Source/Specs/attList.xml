@@ -43,7 +43,7 @@ element, as a series of attDef elements.</desc><desc version="2006-10-28" xml:la
     <attDef ident="type" usage="opt">
       <equiv/>
       <desc>type of schema</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
     </attDef>
   </attList>
 </egXML>

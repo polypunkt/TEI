@@ -36,7 +36,7 @@ supplied as the content of a child <gi>wit</gi> element.</p>
       <equiv/>
       <desc>classifies the reading according to some useful typology.</desc><desc version="2006-10-28" xml:lang="ja">当該読みの種類を示す．</desc>
       <datatype>
-	<rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/>
+	<rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/>
       </datatype>
       <valList type="open">
         <valItem ident="substantive">
@@ -58,7 +58,7 @@ from other readings.</gloss>
 	<desc>classifies the cause for the variant reading, according to
 any appropriate typology of possible origins.</desc><desc version="2006-10-28" xml:lang="ja">異なる読みが生じる原因の分類を示す．</desc>
       <datatype>
-	<rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/>
+	<rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/>
       </datatype>
       <valList type="open">
 	<valItem ident="homeoteleuton"/>

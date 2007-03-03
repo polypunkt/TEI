@@ -70,7 +70,7 @@ header (see section <ptr target="#PHDH"/>).</valDesc>
 	<equiv/>
 	<desc>Where the difficulty in transcription arises from
  damage, categorizes the cause of the damage, if it can be identified.</desc><desc version="2006-06-05" xml:lang="zh-tw">若因為內容遭受損毀而引起轉錄困難，且可辨別出損毀的導因，則在此加以說明。</desc><desc version="2006-10-28" xml:lang="ja">転記の困難が，損傷による場合，その損傷の種類を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
 <valList type="open">
   <valItem ident="rubbing"><gloss>damage results from rubbing of the
   leaf edges</gloss><gloss version="2006-06-05" xml:lang="zh-tw">損毀是起因於書頁邊緣摩擦受損</gloss></valItem>

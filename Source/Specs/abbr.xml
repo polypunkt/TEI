@@ -20,7 +20,7 @@ $Author$
 	<equiv/>
 	<desc>allows the encoder to classify the abbreviation according to
 some convenient typology.</desc><desc version="2006-06-05" xml:lang="zh-tw">標記者可以用便利的分類方法將縮寫形式分類。</desc><desc version="2006-10-28" xml:lang="ja">符号化する人の分類に従って省略名称を作成して良い．</desc>      
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valList type="open">
         <valItem ident="suspension">
           <equiv/>

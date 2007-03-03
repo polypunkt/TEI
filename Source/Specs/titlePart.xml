@@ -20,7 +20,7 @@ indicated on a title page.</desc><desc version="2006-10-28" xml:lang="ja"> タ�
     <attDef ident="type" usage="opt">
 	<equiv/>
 	<desc>specifies the role of this subdivision of the title.</desc><desc version="2006-10-28" xml:lang="ja">当該タイトル部分の役割を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <defaultVal>main</defaultVal>
       <valList type="semi">
         <valItem ident="main">

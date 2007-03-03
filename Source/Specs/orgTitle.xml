@@ -18,7 +18,7 @@ name. </desc><desc version="2006-10-28" xml:lang="ja"> 当該組織の固有名�
 	<desc>more fully describes the organization title. Possible values
 include <q>formal</q>,
 <q>colloquial</q>, <q>acronym</q>, etc.</desc><desc version="2006-10-28" xml:lang="ja">当該組織名についての詳細を示す．例えば，公式名，通称，省略名など．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/></datatype>
       <valDesc>any string of characters</valDesc>
     </attDef>
     <attDef ident="reg" usage="opt">

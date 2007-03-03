@@ -10,7 +10,7 @@ $Author: $
   <attList>
     <attDef ident="place" usage="rec">
       <datatype>
-        <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/>
+        <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.selection"/>
       </datatype>  
       <valList type="semi">
         <!-- general purpose, alphabetical order -->
