@@ -1,110 +1,172 @@
-<!--Copyright TEI Consortium. 
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright TEI Consortium. 
 Licensed under the GNU General Public License. 
-See the file COPYING for details
+See the file COPYING.txt for details
 $Date$
-$Author$
+$Id$
 -->
 <elementSpec xmlns="http://www.tei-c.org/ns/1.0" module="core" xml:id="LIST" usage="rwa" ident="list">
-<equiv/>
-<gloss/>
-<desc>contains any sequence of items organized as a list.</desc><desc version="2006-06-05" xml:lang="zh-tw">包含以列表方式呈現的任何連續項目。</desc><desc version="2006-10-28" xml:lang="ja">リスト構造のような，一連の項目を持つもの．</desc>
+  <equiv/>
+  <gloss>list</gloss>
+  <gloss xml:lang "fr">liste</gloss>
+  <desc>contains any sequence of items organized as a list.</desc>
+  <desc version="2007-12-20" xml:lang="kr">목록의 형태로 정리된 항목을 포함한다.</desc>
+  <desc version="2007-05-02" xml:lang="zh-tw">包含以列表方式呈現的任何連續項目。</desc>
+  <desc version="2008-04-05" xml:lang="ja">
+  リストのような，項目列を示す．
+  </desc>
+  <desc version="2008-12-16" xml:lang="fr">contient toute série d'items organisée en liste</desc>
+  <desc version="2007-05-04" xml:lang="es">contiene cualquier secuencia de ítems o elementos organizados en una lista.</desc>
+  <desc version="2007-01-21" xml:lang="it">contiene una qualsiasi sequenza di voci organizzate in una lista.</desc>
   <classes>
     <memberOf key="model.listLike"/>
   </classes>
-  <content xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns="http://www.tei-c.org/ns/1.0">
+  <content xmlns:rng="http://relaxng.org/ns/structure/1.0">
     <rng:group>
       <rng:zeroOrMore>
-	<rng:choice>
-	  <rng:group>
-	    <rng:ref name="model.divWrapper"/>
-	  </rng:group>
-	  <rng:group>
-	    <rng:ref name="model.global"/>
-	  </rng:group>
-	</rng:choice>
+        <rng:choice>
+          <rng:group>
+            <rng:ref name="model.divTop"/>
+          </rng:group>
+          <rng:group>
+            <rng:ref name="model.global"/>
+          </rng:group>
+        </rng:choice>
       </rng:zeroOrMore>
       <rng:choice>
-	<rng:oneOrMore>
-	  <rng:ref name="item"/>
-	  <rng:zeroOrMore>
-	    <rng:ref name="model.global"/>
-	  </rng:zeroOrMore>
-	</rng:oneOrMore>
-	<rng:group>
-	  <rng:optional>
-	    <rng:ref name="headLabel"/>
-<!-- 	    <rng:zeroOrMore>
+        <rng:oneOrMore>
+          <rng:ref name="item"/>
+          <rng:zeroOrMore>
+            <rng:ref name="model.global"/>
+          </rng:zeroOrMore>
+        </rng:oneOrMore>
+        <rng:group>
+          <rng:optional>
+            <rng:ref name="headLabel"/>
+            <!-- 	    <rng:zeroOrMore>
 	      <rng:ref name="model.global"/>
 	    </rng:zeroOrMore> -->
-<!-- The removal of this component (and the same one after <headItem> is-->
-<!-- wrong, and breaks the content model. The right thing to do, IMHO,-->
-<!-- is to leave these in, and either-->
-<!-- * improve the ODD -> DTD process so that it does the right thing-->
-<!--   (which would probably be very hard)-->
-<!-- * require the user to fix the content model if & when she removes-->
-<!--   <headItem> or <headLabel>-->
-<!-- I haven't fixed this particular instance yet, because we hope to-->
-<!-- completely revamp the content of <list>, anyway, hopefully-->
-<!-- removing the special-purpose <headItem> and <headLabel>. -Syd -->
-	  </rng:optional>
-	  <rng:optional>
-	    <rng:ref name="headItem"/>
-<!--	    <rng:zeroOrMore>
+            <!-- The removal of this component (and the same one after <headItem> is-->
+            <!-- wrong, and breaks the content model. The right thing to do, IMHO,-->
+            <!-- is to leave these in, and either-->
+            <!-- * improve the ODD -> DTD process so that it does the right thing-->
+            <!--   (which would probably be very hard)-->
+            <!-- * require the user to fix the content model if & when she removes-->
+            <!--   <headItem> or <headLabel>-->
+            <!-- I haven't fixed this particular instance yet, because we hope to-->
+            <!-- completely revamp the content of <list>, anyway, hopefully-->
+            <!-- removing the special-purpose <headItem> and <headLabel>. -Syd -->
+          </rng:optional>
+          <rng:optional>
+            <rng:ref name="headItem"/>
+            <!--	    <rng:zeroOrMore>
 	      <rng:ref name="model.global"/>
 	    </rng:zeroOrMore> -->
-	  </rng:optional>
-	  <rng:oneOrMore>
-	    <rng:ref name="label"/>
-	    <rng:zeroOrMore>
-	      <rng:ref name="model.global"/>
-	    </rng:zeroOrMore>
-	    <rng:ref name="item"/>
-	    <rng:zeroOrMore>
-	      <rng:ref name="model.global"/>
-	    </rng:zeroOrMore>
-	  </rng:oneOrMore>
-	</rng:group>
+          </rng:optional>
+          <rng:oneOrMore>
+            <rng:ref name="label"/>
+            <rng:zeroOrMore>
+              <rng:ref name="model.global"/>
+            </rng:zeroOrMore>
+            <rng:ref name="item"/>
+            <rng:zeroOrMore>
+              <rng:ref name="model.global"/>
+            </rng:zeroOrMore>
+          </rng:oneOrMore>
+        </rng:group>
       </rng:choice>
       <rng:zeroOrMore>
-	<rng:group>
-	  <rng:group>
-	    <rng:ref name="model.divWrapper.bottom"/>
-	  </rng:group>
-	  <rng:zeroOrMore>
-	    <rng:ref name="model.global"/>
-	  </rng:zeroOrMore>
-	</rng:group>
+        <rng:group>
+          <rng:group>
+            <rng:ref name="model.divBottom"/>
+          </rng:group>
+          <rng:zeroOrMore>
+            <rng:ref name="model.global"/>
+          </rng:zeroOrMore>
+        </rng:group>
       </rng:zeroOrMore>
     </rng:group>
   </content>
   <attList>
     <attDef ident="type" usage="opt">
-	<equiv/>
-	<desc>describes the form of the list.</desc><desc version="2006-06-05" xml:lang="zh-tw">描述列表的形式。</desc><desc version="2006-10-28" xml:lang="ja">当該リストの形を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/></datatype>
+      <equiv/>
+      <desc>describes the form of the list.</desc>
+      <desc version="2007-12-20" xml:lang="kr">목록의 형식을 기술한다.</desc>
+      <desc version="2007-05-02" xml:lang="zh-tw">描述列表的形式。</desc>
+      <desc version="2008-04-05" xml:lang="ja">
+      当該リストの形式を示す．
+      </desc>
+      <desc version="2008-12-16" xml:lang="fr">décrit la forme de la liste</desc>
+      <desc version="2007-05-04" xml:lang="es">describe la composición de una lista.</desc>
+      <desc version="2007-01-21" xml:lang="it">descrive la forma della lista</desc>
+      <datatype>
+        <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.enumerated"/>
+      </datatype>
       <defaultVal>simple</defaultVal>
       <valList type="semi">
         <valItem ident="ordered">
           <equiv/>
-          <gloss>list items are numbered or lettered.
-    </gloss><gloss version="2006-06-05" xml:lang="zh-tw">列表項目以數字或字母依順序排列。</gloss>
+          <desc>list items are numbered or lettered.
+    </desc>
+          <desc version="2007-12-20" xml:lang="kr">목록의 각 항목은 숫자순 또는 문자순으로 정렬되어 있다.</desc>
+          <desc version="2007-05-02" xml:lang="zh-tw">列表項目以數字或字母依順序排列。</desc>
+          <desc version="2008-04-06" xml:lang="es">los elementos de la lista se numeran (con números o letras).
+    </desc>
+          <desc version="2008-04-05" xml:lang="ja">
+          リストの項目は番号付けまたは文字付けされている．
+          </desc>
+          <desc version="2008-03-30" xml:lang="fr">le classement des items de la liste
+est alphanumérique</desc>
+          <desc version="2007-01-21" xml:lang="it">le voci della lista sono in ordine numerico o alfabetico</desc>
         </valItem>
         <valItem ident="bulleted">
           <equiv/>
-          <gloss>list items are marked with a
+          <desc>list items are marked with a
 bullet or other typographic device.
-    </gloss><gloss version="2006-06-05" xml:lang="zh-tw">列表項目以黑點或其他印刷符號排列。</gloss>
+    </desc>
+          <desc version="2007-12-20" xml:lang="kr">목록의 각 항목은 글머리표 또는 부호로 표지되어 있다.</desc>
+          <desc version="2007-05-02" xml:lang="zh-tw">列表項目以黑點或其他印刷符號排列。</desc>
+          <desc version="2008-04-06" xml:lang="es">los items de la lista se marcan con ul punto negro o con cualquier otro caracter tipográfico.
+    </desc>
+          <desc version="2008-04-05" xml:lang="ja">
+          リスト項目は，中黒または他の印刷可能な印で示されている．
+          </desc>
+          <desc version="2008-03-30" xml:lang="fr">les items de la liste sont marqués par
+une puce ou avec un autre dispositif typographique.</desc>
+          <desc version="2007-01-21" xml:lang="it">le voci della lista sono contraddistinte da un punto o altro </desc>
         </valItem>
         <valItem ident="simple">
           <equiv/>
-          <gloss>list items are not numbered or bulleted.
-    </gloss><gloss version="2006-06-05" xml:lang="zh-tw">列表項目的排列沒有用數字或任何其他符號作標記。</gloss>
+          <desc>list items are not numbered or bulleted.
+    </desc>
+          <desc version="2007-12-20" xml:lang="kr">목록의 각 항목이 숫자 또는 글머리표로 표지되어 있지 않다.</desc>
+          <desc version="2007-05-02" xml:lang="zh-tw">列表項目的排列沒有用數字或任何其他符號作標記。</desc>
+          <desc version="2008-04-06" xml:lang="es">los items de la lista no son numerados o punteados.
+    </desc>
+          <desc version="2008-04-05" xml:lang="ja">
+          リスト項目は，番号付けまたは中黒付けがされていない．
+          </desc>
+          <desc version="2008-03-30" xml:lang="fr">les items de la liste ne sont pas
+numérotés ni précédés d'une puce</desc>
+          <desc version="2007-01-21" xml:lang="it">le voci della lista sono sono ordinate</desc>
         </valItem>
         <valItem ident="gloss">
           <equiv/>
-          <gloss>each list item glosses some term or
+          <desc>each list item glosses some term or
 concept, which is given by a label element preceding
-the list item.</gloss><gloss version="2006-06-05" xml:lang="zh-tw">各列表項目為一個字詞下註解，每個項目之前並帶有標籤元素。</gloss>
+the list item.</desc>
+          <desc version="2007-12-20" xml:lang="kr">목록의 각 항목은 선행하는 요소에서 제시된 용어 또는 개념에 대한 설명이다.</desc>
+          <desc version="2007-05-02" xml:lang="zh-tw">各列表項目為一些字詞或概念下註解，每個項目之前並帶有標籤元素。</desc>
+          <desc version="2008-04-06" xml:lang="es">cada item de la lista glosa algun término o concepto de los que han sido dados por un elemento de la lista de la etiqueta que precede.</desc>
+          <desc version="2008-04-05" xml:lang="ja">
+          リスト項目は，当該リスト項目に先行してあるラベル要素で示され
+          たある用語や意義をまとめたものである．
+          </desc>
+          <desc version="2008-03-30" xml:lang="fr">chaque item de la liste commente un
+terme ou concept qui est donné par un élément <gi>label</gi>précédant
+l'item de la liste.</desc>
+          <desc version="2007-01-21" xml:lang="it">ogni voce dell'elenco è la glossa di un termine o concetto dato da un elemento legenda che precede la voce stessa</desc>
         </valItem>
       </valList>
       <exemplum>
@@ -115,10 +177,22 @@ the list item.</gloss><gloss version="2006-06-05" xml:lang="zh-tw">各列表項�
 <gi>label</gi> tags to be omitted from lists tagged <tag>list
 type="gloss"</tag>; this is however a semantic error.</p>
       </remarks>
+      <remarks xml:lang="fr">
+        <p>La syntaxe formelle des déclarations d'élément permet d'omettre les étiquettes de balises des listes balisées
+          par <tag>list type="gloss"</tag> mais c'est une erreur sémantique.</p>
+      </remarks>
+      <remarks xml:lang="ja">
+        <p>
+        当該要素の宣言では，要素<gi>label</gi>は，タグ<tag>list
+        type="gloss"</tag>中で省略することができることになっているが，
+        これは意味上のエラーになる．
+        </p>
+      </remarks>
     </attDef>
   </attList>
   <exemplum>
-    <egXML xmlns="http://www.tei-c.org/ns/Examples">      <list type="ordered">
+    <egXML xmlns="http://www.tei-c.org/ns/Examples">
+      <list type="ordered">
         <item>a butcher</item>
         <item>a baker</item>
         <item>a candlestick maker, with
@@ -131,7 +205,11 @@ type="gloss"</tag>; this is however a semantic error.</p>
     <p>The following example treats the short numbered clauses of
 Anglo-Saxon legal codes as lists of items.  The text is from an
 ordinance of King Athelstan (924–939):</p>
-<egXML xmlns="http://www.tei-c.org/ns/Examples"><div1 type="section"><head>Athelstan's Ordinance</head><list type="ordered"><item n="1">Concerning thieves.  First, that no thief is to be
+    <egXML xmlns="http://www.tei-c.org/ns/Examples">
+      <div1 type="section">
+        <head>Athelstan's Ordinance</head>
+        <list type="ordered">
+          <item n="1">Concerning thieves.  First, that no thief is to be
      spared who is caught with the stolen goods, [if he is] over
      twelve years and [if the value of the goods is] over eightpence.
     <list type="ordered"><item n="1.1">And if anyone does spare one, he is to pay for the
@@ -145,14 +223,16 @@ ordinance of King Athelstan (924–939):</p>
       with his wergild, or to bring him back there.</item><item n="1.5">And if he steals after that, they are to pay
       for him with his wergild, whether to the king or to him
       to whom it rightly belongs; and everyone of those who
-      supported  him is to pay 120 shillings to  the king as a fine.</item></list></item><item n="2">Concerning lordless men.  And we pronounced about these
+      supported  him is to pay 120 shillings to  the king as a fine.</item></list></item>
+          <item n="2">Concerning lordless men.  And we pronounced about these
    lordless men, from whom no justice can be obtained, that one
    should order their kindred to fetch back such a person to justice
    and to find him a lord in public meeting.
    <list type="ordered"><item n="2.1">And if they then will not, or cannot, produce him on
       that appointed day, he is then to be a fugitive afterwards, and
       he who encounters him is to strike him down as a thief.</item><item n="2.2">And he who harbours him after that, is to pay for him
-      with his wergild or to clear himself by an oath of that amount.</item></list></item><item n="3">Concerning the refusal of justice.  The lord who
+      with his wergild or to clear himself by an oath of that amount.</item></list></item>
+          <item n="3">Concerning the refusal of justice.  The lord who
     refuses justice and upholds his guilty man, so that the king is
     appealed to, is to repay the value of the goods and 120 shillings
     to the king; and he who appeals to the king before he demands
@@ -163,17 +243,22 @@ ordinance of King Athelstan (924–939):</p>
       and be liable to his wergild on the first occasionp if he does it
       more often, he is to be liable to pay all that he owns.</item><item n="3.2">And likewise any of the king's treasurers or of our
       reeves, who has been an accessory of thieves who have committed
-      theft, is to liable to the same.</item></list></item><item n="4">Concerning treachery to a lord.  And we have pronounced
+      theft, is to liable to the same.</item></list></item>
+          <item n="4">Concerning treachery to a lord.  And we have pronounced
    concerning treachery to a lord, that he [who is accused] is to
    forfeit his life if he cannot deny it or is afterwards convicted
-   at the three-fold ordeal.</item></list></div1></egXML>
-<p>Note that nested lists have been used so the tagging mirrors the
+   at the three-fold ordeal.</item>
+        </list>
+      </div1>
+    </egXML>
+    <p>Note that nested lists have been used so the tagging mirrors the
 structure indicated by the two-level numbering of the clauses.
 The clauses could have been treated as a one-level list with
 irregular numbering, if desired.</p>
   </exemplum>
   <exemplum>
-    <egXML xmlns="http://www.tei-c.org/ns/Examples">      <p>These decrees, most blessed Pope Hadrian, we propounded in the
+    <egXML xmlns="http://www.tei-c.org/ns/Examples">
+      <p>These decrees, most blessed Pope Hadrian, we propounded in the
 public council ... and they confirmed them in our hand in your
 stead with the sign of the Holy Cross, and afterwards inscribed
 with a careful pen on the paper of this page, affixing thus the
@@ -195,6 +280,17 @@ with the sign of the Holy Cross.</item></list>
     <p rend="dataDesc">May contain an optional heading followed by a series of
 items, or a series of label and item pairs, the latter being optionally
 preceded by one or two specialized headings.</p>
+  </remarks>
+  <remarks xml:lang="fr">
+    <p rend="dataDesc">Peut contenir un titre facultatif suivi d'une série d'items ou d'une série de paires constituées d'une étiquette et d'un item, 
+      ce dernier type de série pouvant être précédé par un ou deux titres spécifiques.</p>
+  </remarks>
+  <remarks xml:lang="ja">
+    <p rend="dataDesc">
+    一連の項目またはラベルと項目の組の前に，選択的にヘダーをとることが
+    ある．一連のラベルと項目の組の場合，選択的に，ひとつ以上のヘダーが
+    先行することがある．
+    </p>
   </remarks>
   <listRef>
     <ptr target="#COLI" type="div2"/>
