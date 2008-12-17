@@ -22,7 +22,7 @@
     <desc version="2007-12-20" xml:lang="kr">어떤 종류의 약어를 포함한다.</desc>
     <desc version="2007-05-02" xml:lang="zh-tw">包含任何形式的縮寫。</desc>
     <desc version="2008-04-05" xml:lang="ja"> 名称の省略 </desc>
-    <desc version="2008-12-16" xml:lang="fr">contient une abréviation quelconque</desc>
+    <desc version="2008-12-16" xml:lang="fr">contient une abréviation quelconque.</desc>
     <desc version="2007-05-04" xml:lang="es">contiene una abreviatura de cualquier clase.</desc>
     <desc version="2007-01-21" xml:lang="it">contiene un'abbreviazione di qualsiasi genere.</desc>
     <classes>
