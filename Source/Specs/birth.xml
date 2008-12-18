@@ -1,53 +1,43 @@
-<!--Copyright TEI Consortium. 
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright TEI Consortium. 
 Licensed under the GNU General Public License. 
-See the file COPYING for details
+See the file COPYING.txt for details
 $Date$
-$Author$
+$Id$
 -->
 <elementSpec xmlns="http://www.tei-c.org/ns/1.0" module="namesdates" xml:id="BIRTH" usage="opt" ident="birth">
-<equiv/>
-<gloss>Birth details</gloss><gloss version="2006-10-28" xml:lang="ja">出生</gloss>
-<desc>contains information about a person's birth, such as its date
-and place.</desc><desc version="2006-10-28" xml:lang="ja"> 人物の出生に関する情報を示す．例えば，日時や場所など．</desc><desc version="2006-10-15" xml:lang="es">contiene información sobre el nacimiento de una persona, como ser su fecha y lugar.</desc>
-  <classes>
-      <memberOf key="model.persEventLike"/>
-      <memberOf key="att.editLike"/>
-      <memberOf key="att.datable"/>
-      <memberOf key="att.naming"/>
-  </classes>
-  <content>
-    <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="macro.phraseSeq"/>
-  </content>
-  <attList>
-    <attDef ident="date" usage="opt">
-	<equiv/>
-	<desc>specifies the date of birth in a W3C standard form (YYYY-MM-DD).</desc><desc version="2006-10-28" xml:lang="ja">W3Cが規定する形式(YYYY-MM-DD)で出生日を示す．</desc>
-      <datatype><rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="data.temporal"/></datatype>
-      <valDesc>a date in one of the formats specified in <title>XML
-      Schema Part 2: Datatypes Second Edition</title></valDesc>
-    </attDef>
-  </attList>
-  <exemplum>
-    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-      <birth>Before 1920, Midlands region.</birth>
-    </egXML>
-  </exemplum>
-  <exemplum>
-    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-      <birth date="1960-12-10">In a small cottage near
-<name type="place">Aix-la-Chapelle</name>,
-early in the morning of <date>10 Dec 1960</date>
-</birth>
-    </egXML>
-  </exemplum>
-  <remarks>
-    <p>Dates and place names, if included in the content of this
-element, should in general be tagged using the <gi>date</gi> and
-<gi>name</gi> elements respectively. If the additional tagset for
-Names and Dates is in use, the more specific elements defined by that
-tagset may be used as an alternative.</p>
-  </remarks>
-  <listRef>
-    <ptr target="#CCAHPA"/>
-  </listRef>
+    <gloss>birth</gloss>
+    <gloss version="2008-12-09" xml:lang="fr">naissance</gloss>
+    <desc>contains information about a person's birth, such as its date and place.</desc>
+    <desc version="2007-12-20" xml:lang="kr">날짜, 장소와 같이 개인의 출생에 관한 정보를 포함한다.</desc>
+    <desc version="2007-05-02" xml:lang="zh-tw">包含個人的出生資訊，例如日期及地點等。</desc>
+    <desc version="2008-04-05" xml:lang="ja"> 人物の出生に関する情報を示す．例えば，日時や場所など． </desc>
+    <desc version="2008-12-09" xml:lang="fr">contient des informations sur la naissance d'une personne, comme la date et le lieu</desc>
+    <desc version="2007-05-04" xml:lang="es">contiene información relativa al nacimiento de una persona, p.ej. fecha y lugar de nacimiento.</desc>
+    <desc version="2007-01-21" xml:lang="it">contiene informazioni relative al luogo e alla data di nascita di una persona</desc>
+    <classes>
+        <memberOf key="model.persEventLike"/>
+        <memberOf key="att.editLike"/>
+        <memberOf key="att.datable"/>
+        <memberOf key="att.naming"/>
+    </classes>
+    <content>
+        <rng:ref xmlns:rng="http://relaxng.org/ns/structure/1.0" name="macro.phraseSeq"/>
+    </content>
+    <exemplum>
+        <egXML xmlns="http://www.tei-c.org/ns/Examples">
+            <birth>Before 1920, Midlands region.</birth>
+        </egXML>
+    </exemplum>
+    <exemplum>
+        <egXML xmlns="http://www.tei-c.org/ns/Examples">
+            <birth when="1960-12-10">In a small cottage near <name type="place">Aix-la-Chapelle</name>, early in the morning of <date>10 Dec
+                    1960</date>
+            </birth>
+        </egXML>
+    </exemplum>
+    <listRef>
+        <ptr target="#CCAHPA"/>
+    </listRef>
 </elementSpec>
