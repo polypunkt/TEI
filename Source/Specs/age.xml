@@ -31,7 +31,7 @@ $Id: age.xml 4899 2008-11-01 12:54:12Z rahtz $
             <desc version="2007-12-20" xml:lang="kr">나이 또는 연령대를 표시하는 수치 부호를 제시한다.</desc>
             <desc version="2007-05-02" xml:lang="zh-tw">提供一個代表該年齡或年齡層的數字代碼</desc>
             <desc version="2008-04-05" xml:lang="ja"> 年齢または年齢層を数値で示す． </desc>
-            <desc version="2008-12-09" xml:lang="fr">fournit un code numérique représentant l'âge ou la tranche d'âge</desc>
+            <desc version="2008-12-09" xml:lang="fr">fournit un code numérique représentant l'âge ou la tranche d'âge.</desc>
             <desc version="2007-05-04" xml:lang="es">proporciona un código numérico que representa la edad o el intervalo de edad.</desc>
             <desc version="2007-01-21" xml:lang="it">assegna un codice numerco che rappresenta l'età o la fascia di età</desc>
             <datatype>
