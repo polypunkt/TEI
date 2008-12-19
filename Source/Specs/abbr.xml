@@ -184,11 +184,11 @@
                     typology of Middle English abbreviations, see <ptr target="#PETTY"/></p>
             </remarks>
             <remarks xml:lang="fr">
-                <p>L'attribut <att>type</att> est fourni si on souhaite typer les abréviations à
+                <p>L'attribut <att>type</att> est fourni si on souhaite classifier les abréviations à
                     l'endroit où elles apparaissent ; cela peut être utile dans certaines
                     circonstances bien qu'une abréviation conserve la même signification dans toutes
                     ses occurrences. Comme les échantillons des valeurs le montrent, les
-                    abréviations peuvent être typées selon la méthode utilisée pour leur
+                    abréviations peuvent être classifiées selon la méthode utilisée pour leur
                     construction, pour leur écriture, ou le référent du terme abrégé ; la typologie
                     utilisée dépend de l'encodeur et doit être pensée soigneusement afin de
                     correspondre aux attentes. Pour une typologie des abréviations concernant le
