@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="html-web" name="TEI-Guidelines">
+    
+    <!-- import default properties from file -->
+    <property file="local.build.properties"/>
+    <property file="build.properties"/>
+    
+    <!-- constructed properties -->
+    <property name="DRIVER" value="${SOURCETREE}/guidelines-${INPUTLANGUAGE}.xml"/>
+    <property name="absolute.build.dir" location="${build.dir}"/>
+    <property name="absolute.TRANG" location="${TRANG}"/>
+    
+    <!--<target name="all" depends="xar"/>
+    <target name="rebuild" depends="clean,all"/>-->
+    
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete file="repodate.xml"/>
+    </target>
+    
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${build.dir}/DTD"/>
+        <mkdir dir="${build.dir}/Schema"/>
+    </target>
+    
+    <target name="outputs" depends="p5odds, p5odds-examples, p5subset.json, RelaxNG, DTDs, isosch.xsl, p5attlist.txt, stripspace.xsl.model, p5examples.isosch.xsl">
+        <delete dir="${build.dir}">
+            <include name="*.out.log"/>
+        </delete>
+    </target>
+    <target name="p5odds" depends="p5odds.rnc, p5odds.message.isosch.xsl">
+        <delete file="${build.dir}/p5odds.compiled.xml"/>
+    </target>
+    <target name="p5odds-examples" depends="p5odds-examples.rnc">
+        <delete file="${build.dir}/p5odds-examples.compiled.xml"/>
+    </target>
+    
+    <target name="html-web" depends="outputs"></target>
+    
+    <target name="repodate">
+        <description>Get current git hash etc.</description>
+        <exec output="repodate.xml" executable="git">
+            <arg line="log --max-count=1 --pretty=format:&quot;&lt;info type='git'&gt;&lt;entry&gt;&lt;commit revision='%h'&gt;&lt;date&gt;%ai&lt;/date&gt;&lt;/commit&gt;&lt;/entry&gt;&lt;/info&gt;&quot;"/>
+        </exec>
+    </target>
+    
+    <target name="base" depends="repodate, init">
+        <xslt processor="trax" force="yes" style="Utilities/expand.xsl" in="${DRIVER}" out="${build.dir}/p5.xml">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        </xslt>
+    </target>
+    
+    <target name="subset" depends="base">
+        <xslt processor="trax" force="yes" style="Utilities/subset.xsl" in="${build.dir}/p5.xml" out="${build.dir}/p5subset.xml">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        </xslt>
+    </target>
+    
+    <target name="p5subset.js" depends="subset">
+        <xslt processor="trax" force="yes" style="${XSL}/odds/odd2json.xsl" in="${build.dir}/p5subset.xml"
+            out="${build.dir}/p5subset.js">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <param name="callback" expression="teijs"/>
+        </xslt>
+    </target>
+    
+    <target name="p5subset.json" depends="subset">
+        <xslt processor="trax" force="yes" style="${XSL}/odds/odd2json.xsl" in="${build.dir}/p5subset.xml"
+            out="${build.dir}/p5subset.json">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <param name="callback" expression=""/>
+        </xslt>
+    </target>
+    
+    <target name="stripspace.xsl.model" depends="subset">
+        <xslt processor="trax" force="yes" style="${XSL}/odds/odd2xslstripspace.xsl" in="${build.dir}/p5subset.xml"
+            out="${build.dir}/stripspace.xsl.model">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        </xslt>
+    </target>
+    
+    <target name="p5attlist.txt" depends="base">
+        <xslt processor="trax" force="yes" style="Utilities/listofattributes.xsl"
+            in="${build.dir}/p5.xml" out="${build.dir}/p5attlist.txt">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        </xslt>
+    </target>
+    
+    <target name="DTDs" depends="subset">
+        <xslt processor="trax" force="yes" style="${XSL}/odds/odd2dtd.xsl" in="${build.dir}/p5subset.xml"
+            out="${build.dir}/DTDs.out.log">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <param name="outputDir" expression="${absolute.build.dir}/DTD"/>
+            <param name="lang" expression="${lang}"/>
+            <param name="documentationLanguage" expression="${docLang}"/>
+        </xslt>
+    </target>
+    
+    <target name="RelaxNG" depends="subset">
+        <xslt processor="trax" force="yes" style="${XSL}/odds/odd2relax.xsl" in="${build.dir}/p5subset.xml"
+            out="${build.dir}/RelaxNG.out.log">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <param name="outputDir" expression="${absolute.build.dir}/Schema"/>
+            <param name="lang" expression="${lang}"/>
+            <param name="documentationLanguage" expression="${docLang}"/>
+        </xslt>
+    </target>
+    
+    <target name="RelaxNG-compact" depends="RelaxNG">
+        <apply executable="java" failonerror="yes">
+            <arg line="-jar ${TRANG}"/>
+            <fileset dir="${build.dir}/Schema">
+                <include name="*.rng"/>
+            </fileset>
+            <srcfile/>
+            <targetfile/>
+            <mapper type="glob" from="*.rng" to="${build.dir}/Schema/*.rnc"/>
+        </apply>
+    </target>
+    
+    <target name="isosch" depends="base">
+        <xslt processor="trax" force="yes" style="${XSL}/odds/extract-isosch.xsl"
+            in="${build.dir}/p5.xml" out="${build.dir}/p5.isosch">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        </xslt>
+    </target>
+    
+    <target name="isosch.xsl" depends="isosch">
+        <xslt processor="trax" force="yes" style="Utilities/iso_svrl_for_xslt2.xsl" in="${build.dir}/p5.isosch"
+            out="${build.dir}/p5.isosch.xsl">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        </xslt>
+    </target>
+    
+    <target name="p5examples.isosch.xsl" depends="isosch">
+        <xslt processor="trax" force="yes" style="Utilities/iso_svrl_for_xslt2.xsl" in="${build.dir}/p5.isosch"
+            out="${build.dir}/p5examples.isosch.xsl">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        </xslt>
+        <replace file="${build.dir}/p5examples.isosch.xsl" token="tei-c.org/ns/1.0" value="tei-c.org/ns/Examples"/>
+    </target>
+    
+    <target name="p5odds.compiled.xml" depends="subset">
+        <xslt force="yes" style="${XSL}/odds/odd2odd.xsl" in="p5odds.odd" out="${build.dir}/p5odds.compiled.xml">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <param name="lang" expression="${lang}" if="lang"/>
+            <param name="defaultSource" expression="${build.dir}/p5subset.xml"/>
+            <param name="verbose" expression="${verbose}" if="verbose"/>
+        </xslt>
+    </target>
+    
+    <target name="p5odds.rng" depends="p5odds.compiled.xml">
+        <xslt force="yes" style="${XSL}/odds/odd2relax.xsl" in="${build.dir}/p5odds.compiled.xml" out="${build.dir}/p5odds.rng">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <param name="lang" expression="${lang}" if="lang"/>
+            <param name="verbose" expression="${verbose}" if="verbose"/>
+        </xslt>
+    </target>
+    
+    <target name="p5odds.isosch" depends="p5odds.compiled.xml">
+        <xslt processor="trax" force="yes" style="${XSL}/odds/extract-isosch.xsl"
+            in="${build.dir}/p5odds.compiled.xml" out="${build.dir}/p5odds.isosch">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        </xslt>
+    </target>
+    
+    <target name="p5odds.isosch.xsl" depends="p5odds.isosch">
+        <xslt processor="trax" force="yes" style="Utilities/iso_svrl_for_xslt2.xsl" in="${build.dir}/p5odds.isosch"
+            out="${build.dir}/p5odds.isosch.xsl">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        </xslt>
+    </target>
+    
+    <target name="p5odds.message.isosch.xsl" depends="p5odds.isosch">
+        <xslt processor="trax" force="yes" style="Utilities/iso_schematron_message_xslt2.xsl"
+            in="${build.dir}/p5odds.isosch" out="${build.dir}/p5odds.message.isosch.xsl">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        </xslt>
+    </target>
+    
+    <target name="p5odds-examples.compiled.xml" depends="subset">
+        <xslt force="yes" style="${XSL}/odds/odd2odd.xsl" in="p5odds-examples.odd"
+            out="${build.dir}/p5odds-examples.compiled.xml">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <param name="lang" expression="${lang}" if="lang"/>
+            <param name="defaultSource" expression="${build.dir}/p5subset.xml"/>
+            <param name="verbose" expression="${verbose}" if="verbose"/>
+        </xslt>
+    </target>
+    
+    <target name="p5odds-examples.rng" depends="p5odds-examples.compiled.xml">
+        <xslt force="yes" style="${XSL}/odds/odd2relax.xsl" in="${build.dir}/p5odds-examples.compiled.xml"
+            out="${build.dir}/p5odds-examples.rng">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <param name="lang" expression="${lang}" if="lang"/>
+            <param name="verbose" expression="${verbose}" if="verbose"/>
+        </xslt>
+    </target>
+    
+    <target name="p5odds.rnc" depends="p5odds.rng">
+        <java jar="${TRANG}" failonerror="true" fork="true">
+            <arg value="${build.dir}/p5odds.rng"/>
+            <arg value="${build.dir}/p5odds.rnc"/>
+        </java>
+    </target>
+    
+    <target name="p5odds-examples.rnc" depends="p5odds-examples.rng">
+        <java jar="${TRANG}" failonerror="true" fork="true">
+            <arg value="${build.dir}/p5odds-examples.rng"/>
+            <arg value="${build.dir}/p5odds-examples.rnc"/>
+        </java>
+    </target>
+    
+</project>
