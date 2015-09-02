@@ -9,6 +9,7 @@
     <property name="DRIVER" value="${SOURCETREE}/guidelines-${DEFAULTLANGUAGE}.xml"/>
     <property name="absolute.build.dir" location="${build.dir}"/>
     
+    <!-- Importing targets from sub project files -->
     <import file="build-guidelines-web.xml"/>
     
     <!--<target name="all" depends="xar"/>
@@ -24,19 +25,22 @@
         <mkdir dir="${build.dir}"/>
     </target>
     
+    <target name="html-web" depends="outputs, guidelines-web"/>
+    
     <target name="outputs" depends="p5odds, p5odds-examples, p5subset.json, RelaxNG-compact, DTDs, isosch.xsl, p5attlist.txt, stripspace.xsl.model, p5examples.isosch.xsl">
+        <description>Generate modular DTDs, Schemas, Schematron and miscellaneous outputs</description>
         <delete dir="${build.dir}">
             <include name="*.out.log"/>
         </delete>
     </target>
+    
     <target name="p5odds" depends="p5odds.rnc, p5odds.message.isosch.xsl">
         <delete file="${build.dir}/p5odds.compiled.xml"/>
     </target>
+    
     <target name="p5odds-examples" depends="p5odds-examples.rnc">
         <delete file="${build.dir}/p5odds-examples.compiled.xml"/>
     </target>
-    
-    <target name="html-web" depends="outputs"></target>
     
     <target name="repodate">
         <description>Get current git hash etc.</description>
@@ -46,6 +50,7 @@
     </target>
     
     <target name="base" depends="repodate, init">
+        <description>Create p5.xml</description>
         <xslt processor="trax" force="yes" style="Utilities/expand.xsl" in="${DRIVER}" out="${build.dir}/p5.xml">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <modified ></modified>
@@ -53,12 +58,14 @@
     </target>
     
     <target name="subset" depends="base">
+        <description>Create p5subset.xml</description>
         <xslt processor="trax" force="yes" style="Utilities/subset.xsl" in="${build.dir}/p5.xml" out="${build.dir}/p5subset.xml">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         </xslt>
     </target>
     
     <target name="p5subset.js" depends="subset">
+        <description>Create p5subset.js</description>
         <xslt processor="trax" force="yes" style="${XSL}/odds/odd2json.xsl" in="${build.dir}/p5subset.xml"
             out="${build.dir}/p5subset.js">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
@@ -67,6 +74,7 @@
     </target>
     
     <target name="p5subset.json" depends="subset">
+        <description>Create p5subset.json</description>
         <xslt processor="trax" force="yes" style="${XSL}/odds/odd2json.xsl" in="${build.dir}/p5subset.xml"
             out="${build.dir}/p5subset.json">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
