@@ -16,9 +16,9 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:import
-      href="http://www.tei-c.org/release/xml/tei/stylesheet/odds/odd2html.xsl"/>
+      href="@Stylesheets-root@/odds/odd2html.xsl"/>
   <xsl:import
-      href="http://www.tei-c.org/release/xml/tei/stylesheet/odds/guidelines.xsl"/>
+  	  href="@Stylesheets-root@/odds/guidelines.xsl"/>
 
  <xsl:strip-space elements="tei:additional tei:address tei:adminInfo
 			    tei:altGrp tei:altIdentifier tei:analytic
@@ -123,7 +123,9 @@
   <xsl:param name="teiWeb"></xsl:param>
   <xsl:param name="divOffset">2</xsl:param>
   <xsl:param name="verboseSpecDesc">false</xsl:param>
+  <xsl:param name="tei-c-index.xml">http://www.tei-c.org/index.xml</xsl:param>
 
+	
 
   <xsl:template match="/">
     <xsl:result-document doctype-public="{$doctypePublic}"
@@ -673,7 +675,7 @@
       </xsl:when>
       <xsl:otherwise>
 	<xsl:apply-templates
-	    select="document('teic-index.xml')//html:ul[@id='udm']" mode="copyhtml"/>
+		select="document($tei-c-index.xml)//html:ul[@id='udm']" mode="copyhtml"/>
       </xsl:otherwise>
     </xsl:choose>
   </div>

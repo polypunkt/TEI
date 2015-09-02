@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="guidelines-web" name="Guidelines-web" basedir="..">
+    <description>This file is to be included within the main P5 ANT build script and provides targets for building the Guidelines web pages</description>
+    
+    <target name="guidelines-web" depends="guidelines-web-all, guidelines-web-default">
+        <description>
+            Main target and a simple switch. 
+            If ALLLANGUAGES is set, the Guidelines web pages will be created for all defined languages. 
+            If ALLLANGUAGES is not set, the Guidelines web pages will only be created for the DEFAULTLANGUAGE.
+        </description>
+    </target>
+    
+    <target name="teiwebsiteguidelines" depends="guidelines-web">
+        <description>Create a zipped release version of the Guidelines for the TEI web site</description>
+        <echo>make HTML version of Guidelines just for TEI web site</echo>
+        <antcall target="guidelines-web-all">
+            <param name="ALLLANGUAGES" value="true"/>
+            <param name="GOOGLEANALYTICS" value="UA-4372657-1"/>
+        </antcall>
+        <zip basedir="${build.dir}/Guidelines-web" destfile="${dist.dir}/teiwebsiteguidelines.zip"/>
+    </target>
+    
+    <target name="guidelines-web-all" if="${ALLLANGUAGES}">
+        <description>Build the Guidelines web pages in all defined languages</description>
+        <parallel>
+            <antcall target="guidelines-de"/>
+            <antcall target="guidelines-en"/>
+            <antcall target="guidelines-es"/>
+            <antcall target="guidelines-fr"/>
+            <antcall target="guidelines-it"/>
+            <antcall target="guidelines-ja"/>
+            <antcall target="guidelines-ko"/>
+            <antcall target="guidelines-zh-TW"/>
+        </parallel>
+    </target>
+    
+    <target name="guidelines-web-default" unless="${ALLLANGUAGES}">
+        <description>Build the Guidelines web pages for the default language</description>
+        <antcall target="guidelines-${DEFAULTLANGUAGE}"/>
+    </target>
+    
+    <target name="guidelines.xsl" depends="init">
+        <copy file="Utilities/guidelines.xsl.model" tofile="${build.dir}/guidelines.xsl">
+            <filterset>
+                <filter token="Stylesheets-root" value="${XSL}"/>
+            </filterset>
+        </copy>
+    </target>
+    
+    <target name="prepare-images">
+        <description>Tar image folder</description>
+        <tar basedir="Images" compression="bzip2" destfile="${build.dir}/images.tar.bz"/>
+        <tar basedir="webnav" compression="bzip2" destfile="${build.dir}/webnav.tar.bz"/>
+    </target>
+    
+    <target name="guidelines-en" depends="guidelines.xsl, base, prepare-images, tei-c-index.xml">
+        <buildweb lang="en"/>
+    </target>
+    
+    <target name="guidelines-fr" depends="guidelines.xsl, base, prepare-images, tei-c-index.xml">
+        <buildweb lang="fr"/>
+    </target>
+    
+    <target name="guidelines-es" depends="guidelines.xsl, base, prepare-images, tei-c-index.xml">
+        <buildweb lang="es"/>
+    </target>
+    
+    <target name="guidelines-de" depends="guidelines.xsl, base, prepare-images">
+        <buildweb lang="de"/>
+    </target>
+    
+    <target name="guidelines-ja" depends="guidelines.xsl, base, prepare-images">
+        <buildweb lang="ja"/>
+    </target>
+    
+    <target name="guidelines-ko" depends="guidelines.xsl, base, prepare-images">
+        <buildweb lang="ko"/>
+    </target>
+    
+    <target name="guidelines-it" depends="guidelines.xsl, base, prepare-images">
+        <buildweb lang="it"/>
+    </target>
+    
+    <target name="guidelines-zh-TW" depends="guidelines.xsl, base, prepare-images">
+        <buildweb lang="zh-TW"/>
+    </target>
+    
+    <target name="tei-c-index.xml" depends="init">
+        <description>Download TEI-C index page for grabbing the nav menus etc.</description>
+        <get src="http://www.tei-c.org/index.xml" dest="${build.dir}/tei-c-index.xml" skipexisting="yes"/>
+    </target>
+    
+    <macrodef name="buildweb">
+        <attribute name="lang"/>
+        <sequential>
+            <echo>Make Guidelines web pages for language @{lang}</echo>
+            <xslt processor="trax" force="yes" style="${build.dir}/guidelines.xsl" in="${build.dir}/p5.xml" out="${build.dir}/buildweb-@{lang}.log" failonerror="yes">
+                <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+                <!-- Path is relative to the above in-path?! -->
+                <param name="outputDir" expression="Guidelines-web/@{lang}/html"/>
+                <param name="lang" expression="@{lang}"/>
+                <param name="doclang" expression="@{lang}"/>
+                <param name="documentationLanguage" expression="@{lang}"/>
+                <param name="googleAnalytics" expression="${GOOGLEANALYTICS}"/>
+                <param name="tei-c-index.xml" expression="${absolute.build.dir}/tei-c-index.xml"/>
+            </xslt>
+            <echo>Copying css, js and images</echo>
+            <copy todir="${build.dir}/Guidelines-web/@{lang}/html" failonerror="yes">
+                <fileset dir="${basedir}">
+                    <include name="*.css"/>
+                </fileset>
+            </copy>
+            <untar dest="${build.dir}/Guidelines-web/@{lang}/html/Images" failonemptyarchive="yes" src="${build.dir}/images.tar.bz" compression="bzip2"/>
+            <untar dest="${build.dir}/Guidelines-web/@{lang}/html" failonemptyarchive="yes" src="${build.dir}/webnav.tar.bz" compression="bzip2"/>
+        </sequential>
+    </macrodef>
+    
+</project>
