@@ -10,7 +10,8 @@
     <property name="absolute.build.dir" location="${build.dir}"/>
     
     <!-- Importing targets from sub project files -->
-    <import file="build-guidelines-web.xml"/>
+    <import file="${scripts.dir}/ant-guidelines-web.xml"/>
+    <import file="${scripts.dir}/ant-validators.xml"/>
     
     <!--<target name="all" depends="xar"/>
     <target name="rebuild" depends="clean,all"/>-->
@@ -51,7 +52,7 @@
     
     <target name="base" depends="repodate, init">
         <description>Create p5.xml</description>
-        <xslt processor="trax" force="yes" style="Utilities/expand.xsl" in="${DRIVER}" out="${build.dir}/p5.xml">
+        <xslt processor="trax" force="yes" style="${scripts.dir}/expand.xsl" in="${DRIVER}" out="${build.dir}/p5.xml">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <modified ></modified>
         </xslt>
@@ -59,7 +60,7 @@
     
     <target name="subset" depends="base">
         <description>Create p5subset.xml</description>
-        <xslt processor="trax" force="yes" style="Utilities/subset.xsl" in="${build.dir}/p5.xml" out="${build.dir}/p5subset.xml">
+        <xslt processor="trax" force="yes" style="${scripts.dir}/subset.xsl" in="${build.dir}/p5.xml" out="${build.dir}/p5subset.xml">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         </xslt>
     </target>
@@ -90,7 +91,7 @@
     </target>
     
     <target name="p5attlist.txt" depends="base">
-        <xslt processor="trax" force="yes" style="Utilities/listofattributes.xsl"
+        <xslt processor="trax" force="yes" style="${scripts.dir}/listofattributes.xsl"
             in="${build.dir}/p5.xml" out="${build.dir}/p5attlist.txt">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         </xslt>
@@ -99,7 +100,7 @@
     <target name="DTDs" depends="subset">
         <mkdir dir="${build.dir}/DTD"/>
         <xslt processor="trax" force="yes" style="${XSL}/odds/odd2dtd.xsl" in="${build.dir}/p5subset.xml"
-            out="${build.dir}/DTDs.out.log">
+            out="${build.dir}/logs/DTDs.out.log">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <param name="outputDir" expression="${absolute.build.dir}/DTD"/>
             <param name="lang" expression="${DEFAULTLANGUAGE}"/>
@@ -110,7 +111,7 @@
     <target name="RelaxNG" depends="subset">
         <mkdir dir="${build.dir}/Schema"/>
         <xslt processor="trax" force="yes" style="${XSL}/odds/odd2relax.xsl" in="${build.dir}/p5subset.xml"
-            out="${build.dir}/RelaxNG.out.log">
+            out="${build.dir}/logs/RelaxNG.out.log">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <param name="outputDir" expression="${absolute.build.dir}/Schema"/>
             <param name="lang" expression="${DEFAULTLANGUAGE}"/>
@@ -138,14 +139,15 @@
     </target>
     
     <target name="isosch.xsl" depends="isosch">
-        <xslt processor="trax" force="yes" style="Utilities/iso_svrl_for_xslt2.xsl" in="${build.dir}/p5.isosch"
+        <xslt processor="trax" force="yes" style="${scripts.dir}/iso_svrl_for_xslt2.xsl" in="${build.dir}/p5.isosch"
             out="${build.dir}/p5.isosch.xsl">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         </xslt>
     </target>
     
+    <!-- Could be replaced with a simple copy?! -->
     <target name="p5examples.isosch.xsl" depends="isosch">
-        <xslt processor="trax" force="yes" style="Utilities/iso_svrl_for_xslt2.xsl" in="${build.dir}/p5.isosch"
+        <xslt processor="trax" force="yes" style="${scripts.dir}/iso_svrl_for_xslt2.xsl" in="${build.dir}/p5.isosch"
             out="${build.dir}/p5examples.isosch.xsl">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         </xslt>
@@ -177,14 +179,14 @@
     </target>
     
     <target name="p5odds.isosch.xsl" depends="p5odds.isosch">
-        <xslt processor="trax" force="yes" style="Utilities/iso_svrl_for_xslt2.xsl" in="${build.dir}/p5odds.isosch"
+        <xslt processor="trax" force="yes" style="${scripts.dir}/iso_svrl_for_xslt2.xsl" in="${build.dir}/p5odds.isosch"
             out="${build.dir}/p5odds.isosch.xsl">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         </xslt>
     </target>
     
     <target name="p5odds.message.isosch.xsl" depends="p5odds.isosch">
-        <xslt processor="trax" force="yes" style="Utilities/iso_schematron_message_xslt2.xsl"
+        <xslt processor="trax" force="yes" style="${scripts.dir}/iso_schematron_message_xslt2.xsl"
             in="${build.dir}/p5odds.isosch" out="${build.dir}/p5odds.message.isosch.xsl">
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         </xslt>

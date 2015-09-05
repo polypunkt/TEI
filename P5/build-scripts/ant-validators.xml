@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="validate-all" name="Validators" basedir="..">
+    <description>This file is to be included within the main P5 ANT build script and provides targets for validating the Guidelines web pages</description>
+    
+    <target name="validate-all"></target>
+    
+    <target name="init-validators" depends="init">
+        <mkdir dir="${build.dir}/valid"/>
+    </target>
+    
+    <target name="v.xml" depends="base, init-validators">
+        <xslt processor="trax" force="yes" style="${scripts.dir}/extractegXML.xsl" in="${build.dir}/p5.xml" out="${build.dir}/v.xml">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <param name="outputDir" expression="${build.dir}/valid"/>
+        </xslt>
+    </target>
+    
+    <target name="validate-p5.xml" depends="p5odds.rng">
+        <!-- Replacement for the rnv task -->
+        <fileset dir="${build.dir}" id="validate-p5.xml.fileset">
+            <include name="p5.xml"/>
+        </fileset>
+        <run-relaxNG schema.file="${build.dir}/p5odds.rng" fileset.id="validate-p5.xml.fileset"/>
+    </target>
+    
+    <target name="schematron1" depends="p5odds.isosch.xsl, base">
+        <echo>Run Schematron script (normal part of Guidelines)</echo>
+        <xslt processor="trax" force="yes" style="${build.dir}/p5odds.isosch.xsl" in="${build.dir}/p5.xml" out="${build.dir}/temp/Schematron1.xml">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        </xslt>
+    </target>
+    
+    <target name="schematron2" depends="p5examples.isosch.xsl, base">
+        <echo>Run Schematron script (Examples in Guidelines marked as valid)</echo>
+        <xslt processor="trax" force="yes" style="${build.dir}/p5examples.isosch.xsl" in="${build.dir}/p5.xml" out="${build.dir}/temp/Schematron2.xml">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        </xslt>
+    </target>
+    
+    <target name="validator" depends="base, schematron1, schematron2">
+        <echo>Run ad hoc XSLT validators</echo>
+        <!-- First we need to copy the validator.xsl.model template and adjust the import path of the pointerattributes.xsl -->
+        <copy file="${scripts.dir}/validator.xsl.model" tofile="${build.dir}/validator.xsl">
+            <filterset>
+                <filter token="pointerattributes.xsl" value="${absolute.build.dir}/pointerattributes.xsl"/>
+            </filterset>
+        </copy>
+        <xslt processor="trax" force="yes" style="${scripts.dir}/prevalidator.xsl" in="${build.dir}/p5.xml" out="${build.dir}/pointerattributes.xsl">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        </xslt>
+        <xslt processor="trax" force="yes" style="${build.dir}/validator.xsl" in="${build.dir}/p5.xml" out="${build.dir}/logs/ValidatorLog.xml">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <param name="Schemtraon1" expression="${absolute.build.dir}/temp/Schematron1.xml"/>
+            <param name="Schemtraon2" expression="${absolute.build.dir}/temp/Schematron2.xml"/>
+        </xslt>
+    </target>
+    
+    <target name="listspecwithnoexample" depends="base">
+        <xslt processor="trax" force="yes" style="${scripts.dir}/listspecwithnoexample.xsl" in="${build.dir}/p5.xml" out="${build.dir}/logs/listspecwithnoexample.log">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        </xslt>
+    </target>
+    
+    <target name="graphics" depends="base">
+        <!-- Need to rewrite to use the ANT task 'get' for fetching local and remote URLs -->
+        <!--<get src="file:///home/pstadler/repos/TEI/P5/antbuider.xml" dest="${build.dir}/temp/"></get>-->
+        <!--<xslt processor="trax" force="yes" style="${scripts.dir}/listgraphics.xsl" in="${build.dir}/p5.xml" out="${build.dir}/graphics.sh">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        </xslt>-->
+    </target>
+    
+    
+    <!-- need to put jing.jar into ant lib folder (e.g. ~/.ant/lib; /usr/share/java/ant-1.8.4/lib for MacOS 10.8; /usr/share/ant/lib for Debian) -->
+    <taskdef name="jing" classname="com.thaiopensource.relaxng.util.JingTask" classpath="Utilities/lib/jing.jar"/>
+    
+    <macrodef name="run-relaxNG">
+        <attribute name="schema.file"/>
+        <attribute name="fileset.id"/>
+        <sequential>
+            <echo level="info">Validating with RelaxNG</echo>
+            <jing rngfile="@{schema.file}">
+                <fileset refid="@{fileset.id}">
+                </fileset>
+            </jing>
+        </sequential>
+    </macrodef>
+    
+</project>

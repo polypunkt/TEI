@@ -40,7 +40,7 @@
     </target>
     
     <target name="guidelines.xsl" depends="init">
-        <copy file="Utilities/guidelines.xsl.model" tofile="${build.dir}/guidelines.xsl">
+        <copy file="${scripts.dir}/guidelines.xsl.model" tofile="${build.dir}/guidelines.xsl">
             <filterset>
                 <filter token="Stylesheets-root" value="${XSL}"/>
             </filterset>
