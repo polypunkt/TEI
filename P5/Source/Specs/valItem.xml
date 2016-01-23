@@ -17,12 +17,13 @@ $Id$
     <memberOf key="att.combinable"/>
   </classes>
   <content>
-    
+    <sequence>
       <alternate minOccurs="0" maxOccurs="unbounded">
         <classRef key="model.descLike"/>
         <classRef key="model.glossLike"/>
       </alternate>
-    
+      <elementRef key="paramList" minOccurs="0" maxOccurs="1"/>    
+    </sequence>
   </content>
   <attList>
     <attDef ident="ident" usage="req">
