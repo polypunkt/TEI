@@ -1608,8 +1608,8 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
       </specList>
     </p>
   </div>
-  <div type="div2" xml:id="TDbuild">
-    <head>Building a Schema</head>
+  <div xml:id="TDB1">
+     <head>Building a TEI Schema</head>
     <!-- this lot doesnt belong here -->
     <p>The specification elements, and some of their children, are all members of the <ident type="class"
         >att.identified</ident> class, from which they inherit the following attributes: <specList>
@@ -1636,6 +1636,8 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
     <p>These attributes are used by an ODD processor to determine how declarations are to be combined to form a schema
       or DTD, as further discussed in this section.</p>
     <!-- end of this lot -->
+  <div xml:id="TDbuild">
+    <head>TEI customizations</head>
     <p>As noted above, a TEI schema is defined by a <gi>schemaSpec</gi> element containing an arbitrary mixture of
       explicit declarations for objects (i.e. elements, classes, patterns, or macro specifications) and references to
       other objects containing such declarations (i.e. references to specification groups, or to modules). A major
@@ -1828,7 +1830,7 @@ most recent version of the Guidelines would be used instead.--></p>
       pointing attributes point at existing targets, and also a link to the TEI ODD file from which the RELAX NG schema
       was generated. See also <ptr target="#HDSCHSPEC"/> for details of another method of linking an ODD specification
       into your file by including a <gi>schemaSpec</gi> element in <gi>encodingDesc</gi>. </p>
-  </div>
+  </div></div>
   <div type="div2" xml:id="TDformal">
     <head>Module for Documentation Elements</head>
     <p>The module described in this chapter makes available the following components: <moduleSpec xml:id="DTDDTD"
@@ -1857,4 +1859,4 @@ most recent version of the Guidelines would be used instead.--></p>
       <specGrpRef target="#TDSG5"/>
     </specGrp>
   </div>
-</div>
+
