@@ -26,7 +26,7 @@
   <attList>
     <attDef ident="behaviour" usage="req">
       <desc versionDate="2015-08-21" xml:lang="en">names the process or function which this
-        processing model uses in order to produce output</desc>
+        processing model uses in order to produce output.</desc>
       <datatype><dataRef key="teidata.enumerated"/></datatype>
       <valList type="semi">
         <valItem ident="alternate">
@@ -249,20 +249,20 @@
     </attDef>
     <attDef ident="predicate" usage="opt">
       <desc versionDate="2015-08-21" xml:lang="en">the condition under which this model applies,
-        given as an XPath Predicate Expression</desc>
+        given as an XPath predicate expression.</desc>
       <datatype>
         <dataRef key="teidata.xpath"/>
       </datatype>
     </attDef>
     <attDef ident="useSourceRendition" usage="opt">
       <desc versionDate="2015-08-21" xml:lang="en">whether to obey any rendition attribute which is
-        present</desc>
+        present.</desc>
       <datatype>
         <dataRef key="teidata.truthValue"/>
       </datatype>
     </attDef>
     <attDef ident="output" usage="opt">
-      <desc versionDate="2015-08-21" xml:lang="en">the intended output method</desc>
+      <desc versionDate="2015-08-21" xml:lang="en">the intended output method.</desc>
       <datatype>
         <dataRef key="teidata.enumerated"/>
       </datatype>

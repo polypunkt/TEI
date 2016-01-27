@@ -1028,8 +1028,9 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
         engineer to implement when documents conforming to a particular TEI customization are processed. To that end,
         the following elements may be used to document one or more <term>processing models</term> for a given element. <specList>
           <specDesc key="model"/>
+            <specDesc key="modelGrp"/>
           <specDesc key="modelSequence"/>
-          <specDesc key="modelGrp"/>
+          
         </specList>
       </p>
       <p>One or more of these elements may appear directly within an element specification to define the processing
@@ -1087,7 +1088,7 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
         <head>Defining a processing model</head>
         <p>The <gi>model</gi> element is used to document the processing model intended for a particular element in an
           abstract manner, independently of its implementation in whatever processing language is chosen. This is
-          achieved by means of the following attributes and elements : <specList>
+          achieved by means of the following attributes and elements: <specList>
             <specDesc key="model" atts="predicate behaviour output useSourceRendition"/>
             <specDesc key="outputRendition" atts="scope"/>
           </specList> The mandatory <att>behaviour</att> attribute defines in broad terms how an element should be
@@ -1159,18 +1160,18 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
           <egXML xmlns="http://www.tei-c.org/ns/Examples">
             <modelGrp output="mobile">
               <model behaviour="inline">
-                <outputRendition>font-size : 7pt</outputRendition>
+                <outputRendition>font-size: 7pt;</outputRendition>
               </model>
               <model behaviour="block">
-                <outputRendition>text-color : red</outputRendition>
+                <outputRendition>text-color: red;</outputRendition>
               </model>
             </modelGrp>
             <modelGrp output="print">
               <model behaviour="inline">
-                <outputRendition>font-size : 12pt</outputRendition>
+                <outputRendition>font-size: 12pt;</outputRendition>
               </model>
               <model behaviour="block" useSourceRendition="true">
-                <outputRendition>text-align: center</outputRendition>
+                <outputRendition>text-align: center;</outputRendition>
               </model>
             </modelGrp>
           </egXML>
