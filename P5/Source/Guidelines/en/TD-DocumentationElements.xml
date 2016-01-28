@@ -739,7 +739,7 @@ to mark any technical term, thus:
           </constraintSpec>
         </egXML>
          Schematron rules are also useful where an application needs to enforce rules on attribute values, as in the
-        following examples which check that various types of <gi>title</gi> are provided :
+        following examples which check that various types of <gi>title</gi> are provided:
         <egXML xmlns="http://www.tei-c.org/ns/Examples">
           <constraintSpec ident="introtitle" scheme="isoschematron">
             <constraint>
@@ -1085,7 +1085,7 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
         <att>output</att>. If multiple <gi>model</gi> elements are provided within a <gi>modelSequence</gi> element,
       then they document a single model composed of a sequence of models to be processed as a unit.</p>-->
       <div type="div3" xml:id="TDPMPM">
-        <head>Defining a processing model</head>
+        <head>The TEI processing model</head>
         <p>The <gi>model</gi> element is used to document the processing model intended for a particular element in an
           abstract manner, independently of its implementation in whatever processing language is chosen. This is
           achieved by means of the following attributes and elements: <specList>
@@ -1179,11 +1179,11 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
       </div>
       <div type="div3" xml:id="TDPMMB">
         <head>Behaviours and their parameters</head>
-        <p>In the examples above we have used without explanation or definition two simple <term>behaviours</term> :
-            <code>inline</code> and <code>block</code>, but many other behaviours are possible. A list of those provided
+        <p>In the examples above we have used without explanation or definition two simple <term>behaviours</term>:
+            <ident>inline</ident> and <ident>block</ident>, but many other behaviours are possible. A list of those provided
           by the current definitions forms part of the specification for the element <gi>model</gi>. A processing model
           can specify any named behaviour, including some which have additional <term>parameters</term>. The
-            <soCalled>parameters</soCalled> of a <soCalled>behaviour</soCalled> resemble the arguments of a function in
+            <ident>parameters</ident> of a <ident>behaviour</ident> resemble the arguments of a function in
           many programming languages: they provide names which can be used to identify and distinguish particular inputs
           to the process used to implement the behaviour in question. </p>
         <p>The following elements are used to represent and to define parameters: <specList>
@@ -1201,15 +1201,15 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
           <egXML xmlns="http://www.tei-c.org/ns/Examples">
             <elementSpec ident="ref" mode="add">
               <model behaviour="link">
-                <param name="uri"> @target </param>
-                <param name="content"> . </param>
+                <param name="uri">@target</param>
+                <param name="content">.</param>
               </model>
             </elementSpec></egXML>
            The content of a <gi>param</gi> element is an XPath predicate expression that defines the required value.
           This XPath is always understood to start with the current context; hence in this example, the
             <ident>uri</ident> parameter takes the value of the <att>target</att> attribute on the <gi>ref</gi> element
           being processed. </p>
-        <p>The parameters available for a given behaviour are defined as a part of the definition of the behavioour
+        <p>The parameters available for a given behaviour are defined as a part of the definition of the behaviour
           itself, as further discussed in section <ptr target="#TDPMDEF"/> below. </p>
         <p>As a further example, the TEI <gi>choice</gi> element requires a different behaviour for which the name
             <ident>alternate</ident> is proposed. Supposing that the <gi>choice</gi> element contains both <gi>sic</gi>
@@ -1265,11 +1265,11 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
         <head>Outputs</head>
         <p>As noted above, the <att>output</att> attribute is used to associate particular processing models with a
           specific type of output channel or output format. The following example documents a range of processing
-          intentions for the <gi>date</gi> element, intended to cope with at least the following three situations : </p>
+          intentions for the <gi>date</gi> element, intended to cope with at least the following three situations: </p>
         <list type="ordered">
           <item>there is text inside the element, and the output is print; </item>
-          <item>there is no text inside the element but there is a when attribute, and the output is print; </item>
-          <item>there is a <att>when</att> attribute and text inside the element, and the output is web</item>
+          <item>there is no text inside the element but there is a <att>when</att> attribute, and the output is print; </item>
+          <item>there is a <att>when</att> attribute, there is text inside the element, and the output is web</item>
         </list>
         <egXML xmlns="http://www.tei-c.org/ns/Examples">
           <elementSpec ident="date" mode="change">
@@ -1294,9 +1294,9 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
         <p> As well as being combined to form model groups, several models may be combined to form a <term>model
             sequence</term>. All of the individual components of a model sequence are understood to be applied, rather
           than considered as alternatives. For example, we might wish to define two different behaviours for a
-            <gi>note</gi> element: the online behaviour should be used to display the value of the note number (given by
-          its <att>n</att> attribute), while a different behaviour (called "footnote" here) should be used to display
-          the content of the element at a specified place, given by the parameter <ident>place</ident>
+            <gi>note</gi> element: the inline behaviour should be used to display the value of the note number (given by
+          its <att>n</att> attribute), while a different behaviour (called <ident>footnote</ident> here) should be used to display
+          the content of the element at a specified place, given by the parameter <ident>place</ident>:
           <egXML xmlns="http://www.tei-c.org/ns/Examples">
             <elementSpec ident="note" mode="change">
               <modelSequence output="print">
@@ -1345,7 +1345,7 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
           available for a given behaviour are specified using a number of <gi>param</gi> elements grouped together in a
             <gi>paramList</gi> element. This <gi>paramList</gi> is supplied within the <gi>valItem</gi> used to document
           and name the behaviour. Here for example is the <gi>valItem</gi> which defines the <ident>link</ident>
-          behaviour presented above :
+          behaviour presented above:
           <egXML xmlns="http://www.tei-c.org/ns/Examples">
             <valItem ident="link">
               <desc>create hyperlink</desc>
@@ -1373,8 +1373,8 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
         </valItem>
       </egXML>-->
         <!-- more needed perhaps to explain what happens when params are not specified ? -->
-        <p>Similarly the <gi>valItem</gi> which defines the behaviour named <val>alternate</val> has two parameters: one
-          also called <val>alternate</val> and the other called <val>default</val>
+        <p>Similarly the <gi>valItem</gi> which defines the behaviour named <ident>alternate</ident> has two parameters: one
+          also called <ident>alternate</ident> and the other called <ident>default</ident>
           <egXML xmlns="http://www.tei-c.org/ns/Examples">
             <valItem ident="alternate">
               <desc versionDate="2015-08-21" xml:lang="en">support display of alternative visualisations, for example by
@@ -1403,9 +1403,9 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
           dynamically as necessary during document processing. In either case, the assumption is that software
           implementing a model will proceed as follows: <list type="ordered">
             <item>For each element in the instance document, any applicable <gi>model</gi> or <gi>modelSequence</gi> for
-              the current output format should be acted upon
+              the current output format should be acted upon.
               <!--whether this is done by consulting
-          the TEI ODD customization directly or rules abstracted into the processing toolchain-->. </item>
+          the TEI ODD customization directly or rules abstracted into the processing toolchain--></item>
             <item> All the <gi>model</gi> elements within an <gi>elementSpec</gi> should be processed in order until a
               match with the predicate is found, or a <gi>model</gi> with no predicate is found. If a <gi>model</gi> has
               no predicate, it matches any occurrence of the element. If a <gi>model</gi> has no output, it applies to
@@ -1418,13 +1418,13 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
               the context matches any active predicate.</item>
             <item>Processing should implement the function named by the <att>behaviour</att> attribute. Where the
               parameter passed to that function is '.' or no <gi>param</gi> is supplied, then the function concerned
-              should be applied to all child nodes of the element including its attributes, element, and text nodes.
+              should be applied to all child nodes of the element including attribute, element, and text nodes.
               Processing continues recursively for these nodes: thus a block should create a block-type object in the
               output for this element and all the results from processing its children.</item>
             <item>If none of the possible <gi>model</gi> elements has a predicate which matches the current element, or
               if no <gi>model</gi> is provided for the current element, each of its child nodes should be processed to
               determine whether one of the available <gi>model</gi> elements applies to them. </item>
-            <item>The special behaviour <val>omit</val> may be used to halt processing for that element and to proceed
+            <item>The special behaviour <ident>omit</ident> may be used to halt processing for that element and to proceed
               to its next sibling.</item>
           </list>
         </p>
