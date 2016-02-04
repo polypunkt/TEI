@@ -1036,8 +1036,8 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
       <p>One or more of these elements may appear directly within an element specification to define the processing
         anticipated for that element, more specifically how it should be processed to produce the kind of output
         indicated by the <att>output</att> attribute. Where multiple <gi>model</gi> elements appear directly within an
-          <gi>elementSpec</gi>, they are understood to document alternative processing models, possibly for different
-        outputs. Alternatively, the <gi>modelGrp</gi> element may be used to group alternative <gi>model</gi> elements
+          <gi>elementSpec</gi>, they are understood to document mutually exclusive processing models, possibly for different
+        outputs or applicable in different contexts. Alternatively, the <gi>modelGrp</gi> element may be used to group alternative <gi>model</gi> elements
         intended for a single kind of output. The <gi>modelSequence</gi> element is provided for the case where a
         sequence of models is to be processed, functioning as a single unit. </p>
       <p>A processing model suggests how a given element may be transformed to produce one or more outputs. The model is
@@ -1045,10 +1045,10 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
         familiar to software engineers and web designers, such as <soCalled>block</soCalled> or
           <soCalled>inline</soCalled>. As such, it has a different purpose from existing TEI mechanisms for documenting
         the appearance of source materials, such as the global attributes <att>rend</att>, <att>rendition</att> and
-          <att>style</att>, described in sections <ptr target="#HD57-1"/> and <ptr target="#COHQW"/>. A processing model
+          <att>style</att>, described in sections <ptr target="#HD57-1"/> and <ptr target="#COHQW"/>. It does not necessarily describe anything present
+        in the original source, nor does it necessarily represent its original structure or semantics. A processing model
         is a template description, which may be used to simplify the task of producing or customizing the stylesheets
-        needed by a formatting engine or any other form of processor. It does not necessarily describe anything present
-        in the original source, nor does it necessarily represent its original structure or semantics. </p>
+        needed by a formatting engine or any other form of processor. <!-- just rearranged two last sentences to keep comparison with rend &c together --></p>
       <!--<p>This method of working  assumes a workflow with at least three
       distinct parts and roles, in creating digital outputs from TEI texts. These roles may be held all by a single
       individual or multiple large teams depending on the scope and available resources. The minimal divisions that
@@ -1090,14 +1090,24 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
           abstract manner, independently of its implementation in whatever processing language is chosen. This is
           achieved by means of the following attributes and elements: <specList>
             <specDesc key="model" atts="predicate behaviour output useSourceRendition"/>
-            <specDesc key="outputRendition" atts="scope"/>
+            <!-- descriptions of the attributes are missing some interpunction in front of Sample/Suggested values -->
+            <specDesc key="outputRendition" atts="scope"/> <!--
+              1. description ends with a dot, unlike <model>'s above. 
+              2. I think it makes sense to mention CSS right at this point, eg. 'Use of CSS for this purpose is suggested'
+            3. current version reads: 'supplies information about the desired output rendition, format, or appearance of *one or more* elements *in the source text*'
+              *one or more* is a bit puzzling as it, by virtue of being a descendant of elementSpec applies for a single element
+              *in the source text* is superfluous and potentially confusing, because what other elements are we processing (and from another perspective 
+              rendition specified here will be in fact applied to elements produced as an output
+            -->
           </specList> The mandatory <att>behaviour</att> attribute defines in broad terms how an element should be
           processed, for example as a block or as an inline element. The optional <att>predicate</att> attribute may be
           used to specify a subset of contexts in which this model should be applicable: for example, an element might
-          be treated as a block element in some contexts, but not in others. The <att>output</att> attribute indicates
-          the type of output for which this model is intended, for example for screen display or for print. The way in
+          be treated as a block element in some contexts, but not in others. The <att>output</att> attribute identifies 
+          the output for which this model is intended, for example for screen display or for print. 
+          <!-- rephrasing to avoid suggestion that we are talking about some typology of outputs when two outputs 
+            of the same type can be equally well imagined, eg. pdf with reading version and also pdf with detailed indexes, commentary and whatnot --> The way in
           which an element should be rendered is declared independently of its behaviour, using either the attribute
-            <att>useSourceRendition</att> or the element <gi>outputRendition</gi>. Rendition is expressed using the W3C
+            <att>useSourceRendition</att> or the element <gi>outputRendition</gi>. <gi>outputRendition</gi> is expressed using the W3C
           Cascading Stylesheet Language (CSS) <!-- version? reference ? -->
         </p>
       </div>
@@ -1114,14 +1124,18 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
            If the <gi>rendition</gi> element, or the attributes <att>style</att>, <att>rend</att>, or
             <att>rendition</att> have already been used in the source document to indicate elements that were originally
           rendered in italic, and we wish simply to follow this in our processing, then there is no need to include an
-            <gi>outputRendition</gi> element, and the attribute <att>useSourceRendition</att> should be used as follows:
+            <gi>outputRendition</gi> element, and the attribute <att>useSourceRendition</att> could 
+          <!-- rephrasing 'should' into 'could', it is a different thing to say: I (editor) decide to follow source rendition at all times
+            then: I (editor) want it always in italics but I have this as rend in my sources, so I won't bother
+            specifying that I want them like so anyway (even if in some future time I will get more documents that will not have rends
+          -->be used as follows:
           <egXML xmlns="http://www.tei-c.org/ns/Examples">
             <model behaviour="inline" useSourceRendition="true"/>
           </egXML>
            Any rendition information present in the source document will be ignored unless the
             <att>useSourceRendition</att> attribute has the value <val>true</val>. If that is the case, then such
           information will be combined with any rendition information supplied by the <gi>outputRendition</gi> element
-          as provided for by the rules of CSS. For example, an element which appears in the source as follows
+          as provided for by the rules of CSS <!-- ah-ha! suddenly it's obvious it will be CSS! -->. For example, an element which appears in the source as follows
           <egXML xmlns="http://www.tei-c.org/ns/Examples">
             <hi style="font-weight:bold;">this is in bold</hi>
           </egXML>
@@ -1154,7 +1168,8 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
         <p>When, as here, multiple behaviours are required for the same element, it will often be the case that the
           appropriate processing will depend on the context. It may however be the case that the choice of an
           appropriate model will be made on the basis of the intended output. For example, we might wish to define quite
-          different behaviours when a document is to be displayed on a mobile device and when it is being transformed to
+          different behaviours when a document is to be displayed on a mobile device and when it is to be presented on wider computer screen or  <!-- again 
+            trying to avoid association of output with format -->being transformed to
           print. The <gi>modelGrp</gi> element can be used to group together processing models which have in common a
           particular output form, as in the following example:
           <egXML xmlns="http://www.tei-c.org/ns/Examples">
@@ -1182,7 +1197,7 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
         <p>In the examples above we have used without explanation or definition two simple <term>behaviours</term>:
             <ident>inline</ident> and <ident>block</ident>, but many other behaviours are possible. A list of those provided
           by the current definitions forms part of the specification for the element <gi>model</gi>. A processing model
-          can specify any named behaviour, including some which have additional <term>parameters</term>. The
+          can specify any named behaviour, some of which have additional <term>parameters</term>. The
             <ident>parameters</ident> of a <ident>behaviour</ident> resemble the arguments of a function in
           many programming languages: they provide names which can be used to identify and distinguish particular inputs
           to the process used to implement the behaviour in question. </p>
@@ -1235,7 +1250,8 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
           </egXML>
         </p>
         <p>A <gi>choice</gi> element may contain several different pairs of alternate elements (<gi>abbr</gi> and
-            <gi>expan</gi>, <gi>orig</gi> and <gi>reg</gi>, etc.). We might wish to group together a set of processing
+            <gi>expan</gi>, <gi>orig</gi> and <gi>reg</gi>, etc.)<!-- deleted the dot after closing paren, not sure what are English interpunction rules though -->
+          We might wish to group together a set of processing
           models for these, for example to determine which of the possible alternatives is displayed by default whenever
           a <gi>choice</gi> element is processed for output to the web:
           <egXML xmlns="http://www.tei-c.org/ns/Examples">
@@ -1256,10 +1272,10 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
             </elementSpec>
           </egXML>
         </p>
-        <p>If nothing matches the XPath defining the value of a particular parameter (if in the above example there is
-          no correction with <att>cert</att>=<val>high</val>, for example) then nothing is output. If no <gi>param</gi>
-          is supplied, the whole content of the <gi>choice</gi> element, including all of its child nodes, will be
-          output. </p>
+        <p>If nothing matches the XPath defining the value of a particular parameter (e.g. if in the above example there is
+          no correction with <att>cert</att>=<val>high</val>) then nothing is output. If no <gi>param</gi> specifying required content
+          is supplied, the whole content of the element (<gi>choice</gi> in this case), including all of its processed child nodes, will be
+          output by default. </p>
       </div>
       <div type="div3" xml:id="TDPMOU">
         <head>Outputs</head>
@@ -1293,9 +1309,9 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
         <head>Model sequence</head>
         <p> As well as being combined to form model groups, several models may be combined to form a <term>model
             sequence</term>. All of the individual components of a model sequence are understood to be applied, rather
-          than considered as alternatives. For example, we might wish to define two different behaviours for a
+          than considered as mutually exclusive alternatives. For example, we might wish to define two different behaviours for a
             <gi>note</gi> element: the inline behaviour should be used to display the value of the note number (given by
-          its <att>n</att> attribute), while a different behaviour (called <ident>footnote</ident> here) should be used to display
+          its <att>n</att> attribute), while a different behaviour (called <ident>footnote</ident> here) should be used at the same time to display
           the content of the element at a specified place, given by the parameter <ident>place</ident>:
           <egXML xmlns="http://www.tei-c.org/ns/Examples">
             <elementSpec ident="note" mode="change">
@@ -1407,8 +1423,8 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
               <!--whether this is done by consulting
           the TEI ODD customization directly or rules abstracted into the processing toolchain--></item>
             <item> All the <gi>model</gi> elements within an <gi>elementSpec</gi> should be processed in order until a
-              match with the predicate is found, or a <gi>model</gi> with no predicate is found. If a <gi>model</gi> has
-              no predicate, it matches any occurrence of the element. If a <gi>model</gi> has no output, it applies to
+              match with the <att>predicate</att> is found, or a <gi>model</gi> with no predicate is found. If a <gi>model</gi> has
+              no predicate, it matches any occurrence of the element. If a <gi>model</gi> has no <att>output</att> attribute defined, it applies to
               all forms of output. </item>
             <item>If the <att>useSourceRendition</att> attribute on the <gi>model</gi> element has the value
                 <val>true</val> then any rendition information provided on the source element must be combined with any
@@ -1417,13 +1433,14 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
             <item>All the <gi>model</gi> elements inside a <gi>modelSequence</gi> should be processed in order, provided
               the context matches any active predicate.</item>
             <item>Processing should implement the function named by the <att>behaviour</att> attribute. Where the
-              parameter passed to that function is '.' or no <gi>param</gi> is supplied, then the function concerned
+              parameter specifying required content (usually <gi>param name="content"</gi>) passed to that function is '.' or no such <gi>param</gi> is supplied,
+              then the function concerned
               should be applied to all child nodes of the element including attribute, element, and text nodes.
               Processing continues recursively for these nodes: thus a block should create a block-type object in the
               output for this element and all the results from processing its children.</item>
             <item>If none of the possible <gi>model</gi> elements has a predicate which matches the current element, or
-              if no <gi>model</gi> is provided for the current element, each of its child nodes should be processed to
-              determine whether one of the available <gi>model</gi> elements applies to them. </item>
+              if no <gi>model</gi> is provided for the current element, each of its child nodes should be processed <!-- to
+              determine whether one of the available <gi>model</gi> elements applies to them -->. Default model for text only nodes is to output the content.</item>
             <item>The special behaviour <ident>omit</ident> may be used to halt processing for that element and to proceed
               to its next sibling.</item>
           </list>
