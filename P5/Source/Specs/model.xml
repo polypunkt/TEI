@@ -27,7 +27,9 @@
     <attDef ident="behaviour" usage="req">
       <desc versionDate="2015-08-21" xml:lang="en">names the process or function which this
         processing model uses in order to produce output.</desc>
-      <datatype><dataRef key="teidata.enumerated"/></datatype>
+      <datatype>
+        <dataRef key="teidata.enumerated"/>
+      </datatype>
       <valList type="semi">
         <valItem ident="alternate">
           <desc versionDate="2015-08-21" xml:lang="en">support display of alternative
@@ -151,12 +153,14 @@
         </valItem>
         <valItem ident="inline">
           <desc versionDate="2015-08-21" xml:lang="en">creates inline element out of
-              <term>content</term> <!--if there's something in <gi>outputRendition</gi>, use that
+              <term>content</term>
+            <!--if there's something in <gi>outputRendition</gi>, use that
             formatting otherwise just show text of selected content.--></desc>
           <equiv name="span"/>
           <paramList>
             <paramSpec ident="content"/>
-            <paramSpec ident="label"/><!-- does what ? -->
+            <paramSpec ident="label"/>
+            <!-- does what ? -->
           </paramList>
         </valItem>
         <valItem ident="link">
@@ -170,7 +174,8 @@
           </paramList>
         </valItem>
         <valItem ident="list">
-          <desc versionDate="2015-08-21" xml:lang="en">create a list <!--by following
+          <desc versionDate="2015-08-21" xml:lang="en">create a list
+            <!--by following
               <term>content</term>--></desc>
           <equiv name="ol"/>
           <paramList>
@@ -185,7 +190,8 @@
           </paramList>
         </valItem>
         <valItem ident="metadata">
-          <desc versionDate="2015-08-21" xml:lang="en">create metadata section</desc><!-- eh what? -->
+          <desc versionDate="2015-08-21" xml:lang="en">create metadata section</desc>
+          <!-- eh what? -->
           <equiv name="head"/>
           <paramList>
             <paramSpec ident="content"/>
@@ -210,7 +216,8 @@
           <paramList>
             <paramSpec ident="content"/>
           </paramList>
-        </valItem><!-- how is this different from block ? -->
+        </valItem>
+        <!-- how is this different from block ? -->
         <valItem ident="row">
           <desc versionDate="2015-08-21" xml:lang="en">create a table row</desc>
           <equiv name="tr"/>
@@ -280,8 +287,10 @@
             plain text format</desc>
         </valItem>
       </valList>
-    </attDef><attDef ident="cssClass" usage="opt">
-      <desc versionDate="2015-08-21" xml:lang="en">the name of a CSS class which should be associated with this element</desc>
+    </attDef>
+    <attDef ident="cssClass" usage="opt">
+      <desc versionDate="2015-08-21" xml:lang="en">the name of a CSS class which should be
+        associated with this element</desc>
       <datatype>
         <dataRef key="teidata.name"/>
       </datatype>
@@ -333,7 +342,7 @@
       </model>
     </egXML>
   </exemplum>
- <!-- <exemplum xml:lang="en">
+  <!-- <exemplum xml:lang="en">
     <egXML xmlns="http://www.tei-c.org/ns/Examples">
       <model predicate="parent::choice and count(parent::*/*) gt 1" behaviour="omit"/>
     </egXML>
@@ -374,10 +383,18 @@
     <p>The <gi>model</gi> element may be used in customizations to document an intended processing
       output. There is no assumption that all possible processing outputs will be documented since
       this is impossible.</p>
+    <p>The intended output to be generated for a particular behaviour of a processing model may be
+      documented in one or all of the three following ways. Firstly, the <att>cssClass</att> attribute may be
+      used to specify the name of a CSS style in some associated CSS stylesheet which is to be
+      applied to each occurrence of a specified element found (in a given context, for a specified
+      output). Secondly, the attribute <att>useSourceRendition</att> may be used to indicate that the default
+      rendition for occurrences of this element, as defined by a <gi>rendition</gi> element in the
+      document header, should be applied. Thirdly, the styling to be applied may be specified
+      explicitly as content of a child <gi>outputRendition</gi> element. When more than one of these
+      options is used, they are understood to be combined in accordance with the rules for multiple
+      declaration of the styling language used.</p>
   </remarks>
-
   <listRef>
-    <ptr target="#TDPMPM" />
+    <ptr target="#TDPMPM"/>
   </listRef>
-
 </elementSpec>
