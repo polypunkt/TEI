@@ -17,9 +17,25 @@ $Id:  $
       <textNode/>
   </content>
   <attList>
-    <attDef ident="name" usage="req">
-      <desc  versionDate="2015-08-21" xml:lang="en">Name of parameter</desc>
-      <datatype><dataRef key="teidata.name"/></datatype>
+ <attDef ident="name" usage="req">
+ <desc  versionDate="2015-08-21" xml:lang="en">Name of parameter</desc>
+ <datatype><dataRef key="teidata.enumerated"/></datatype>
+<!-- these are all the different param/@name values which polygon knows about-->
+<valList type="closed"><!-- or semi? -->
+<valItem ident='alternate'/>
+<valItem ident='content'/>
+<valItem ident='default'/>
+<valItem ident='height'/>
+<valItem ident='id'/>
+<valItem ident='label'/>
+<valItem ident='level'/>
+<valItem ident='link'/>
+<valItem ident='place'/>
+<valItem ident='scale'/>
+<valItem ident='type'/>
+<valItem ident='url'/>
+<valItem ident='width'/>
+</valList>
     </attDef>
   </attList>
   <exemplum xml:lang="en">
