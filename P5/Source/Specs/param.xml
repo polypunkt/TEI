@@ -21,7 +21,7 @@ $Id:  $
  <desc  versionDate="2015-08-21" xml:lang="en">Name of parameter</desc>
  <datatype><dataRef key="teidata.enumerated"/></datatype>
 <!-- these are all the different param/@name values which polygon knows about-->
-<valList type="closed"><!-- or semi? -->
+<valList type="semi">
 <valItem ident='alternate'/>
 <valItem ident='content'/>
 <valItem ident='default'/>
@@ -36,27 +36,28 @@ $Id:  $
 <valItem ident='url'/>
 <valItem ident='width'/>
 </valList>
-    </attDef>
+</attDef>
+<attDef ident="value" usage="req">    
+<desc>supplies an Xpath expression used as the value for a parameter</desc>
+  <datatype><dataRef key="teidata.xpath"/></datatype>
+</attDef>
   </attList>
   <exemplum xml:lang="en">
     <egXML xmlns="http://www.tei-c.org/ns/Examples">
       <model predicate="sic and corr" behaviour="alternate">
-        <param name="default">corr</param>
-        <param name="alternate">sic</param>
+        <param name="default" value="corr"/>
+        <param name="alternate" value="sic"/>
       </model>
-      <model predicate="abbr and expan[1]" behaviour="alternate">
-        <param name="default">expan</param>
-        <param name="alternate">abbr</param>
-      </model>
-      <model predicate="orig and reg" behaviour="alternate">
-        <param name="default">reg</param>
-        <param name="alternate">orig</param>
+      <model predicate="abbr and expan" behaviour="alternate">
+        <param name="default" value="expan[1]">
+        <param name="alternate" value="abbr"/>abbr</param>
       </model>
     </egXML>
   </exemplum>
   
   <remarks versionDate="2015-08-21" xml:lang="en">
-    <p>The content of parameter is an XPath Predicate Expression. The names of the expected parameters may be documented in the corresponding customization using <gi>paramSpec</gi>.</p>
+    <p>The content of parameter is an XPath Expression. 
+      The names and datatypes of the expected parameters should be documented in the corresponding customization using a <gi>paramSpec</gi> element.</p>
   </remarks>
   
   

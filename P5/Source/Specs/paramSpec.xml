@@ -15,16 +15,16 @@ $Id:  $
     <memberOf key="att.identified"/>
   </classes>
   <content>
-    <alternate minOccurs="0" maxOccurs="unbounded">
+  <alternate minOccurs="0" maxOccurs="unbounded">
       <classRef key="model.glossLike"/>
       <classRef key="model.descLike"/>
     </alternate>
+  
   </content>
   <exemplum xml:lang="en">
     <egXML xmlns="http://www.tei-c.org/ns/Examples">
       <valItem ident="link">
         <desc>create hyperlink</desc>
-        <equiv name="a"/>
         <paramList>
           <paramSpec ident="content"/>
           <paramSpec ident="link">
