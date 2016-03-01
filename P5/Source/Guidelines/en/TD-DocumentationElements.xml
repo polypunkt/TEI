@@ -992,7 +992,7 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
         <p>The <gi>model</gi> element is used to document the processing model intended for a particular element in an abstract manner,
           independently of its implementation in whatever processing language is chosen. This is achieved by means of the following
           attributes and elements: <specList>
-            <specDesc key="model" atts="predicate behaviour output useSourceRendition"/>
+            <specDesc key="model" atts="predicate behaviour output useSourceRendition cssClass"/>
               <specDesc key="outputRendition" atts="scope"/>
            
           </specList> The mandatory <att>behaviour</att> attribute defines in broad terms how an element should be processed, for example as
@@ -1039,6 +1039,42 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
           </egXML>
         </p>
          </div>
+      <div type="div3" xml:id="TDPMCC">
+        <head>CSS Class</head>
+        <p>
+          From a workflow point of view, a web designer would usually prepare external CSS to style HTML output. To provide means to specify persistent class
+          names that can be reused across models and for both static and dynamic content in a consistent way, a <att>cssClass</att> attribute is available on a <gi>model</gi>.
+          Value passed via <att>cssClass</att> should contain a name, or multiple names, of CSS classes to be passed through to the output. It is understood that definitions
+          for these class names will be provided in an external stylesheet.
+          
+          <!-- Just imagine you have to tell your designer to adjust all his neatly organised stuff to the arbitrary, non-telling class names produced by the PM.
+          to specify persistent and human/designer-friendly class names to be passed through to the output
+          the intention that designer can specify necessary styling in static css
+          Also, in a real-world app you'll have a mix of static and dynamic content, and you want to reuse your classes for both in a consistent way.
+           -->
+          
+          Here is an example of a processing model for table elements using <att>cssClass</att>. The intent is that if there are informations on source formatting
+          preserved in <att>rendition</att> attributes on table rows or cells, these should be applied, but otherwise classes from Bootstrap
+          framework should be used to provide pretty formatting for tables.
+          <egXML xmlns="http://www.tei-c.org/ns/Examples">
+            <elementSpec mode="change" ident="table">
+              <!-- Preserve original rendition for tables which contain @rendition hints -->
+              <model predicate=".//row/@rendition or .//cell/@rendition" behaviour="table" useSourceRendition="true"/>
+              <!-- Use bootstrap for default table styling -->
+              <model behaviour="table" useSourceRendition="true" cssClass="table table-hover table-bordered"/>
+            </elementSpec>
+          </egXML>
+          
+          Another example, intended as a model for <gi>list</gi> demonstrates passing the 'labeled-list' CSS class for cases where processed element
+          includes any <gi>label</gi> children.
+          
+          <egXML xmlns="http://www.tei-c.org/ns/Examples">
+            <model predicate="label" behaviour="list" cssClass="labeled-list">
+            <param name="content">item</param>
+          </model>
+          </egXML>
+        </p>
+      </div>
       <div type="div3" xml:id="TDPMMC">
         <head>Model Contexts and Outputs</head>
         <p>Sometimes different processing models are required for the same element in different contexts. For example, we may wish to
