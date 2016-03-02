@@ -1304,40 +1304,62 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
           TEI-specific rules, and to maximize the ability of the ODD to express processing intentions without fully specifying an
           implementation. </p>
       </div>
-      <div type="div3" xml:id="TDPMIP">
-        <head>Implementation</head>
-        <p>The processing models embedded in a TEI ODD customization may be pre-processed to produce a free standing processing pipeline
-          into which document instances can be fed, or the ODD customization may be consulted dynamically as necessary during document
-          processing. In either case, the assumption is that software implementing a model will proceed as follows: <list type="ordered">
-            <item>For each element in the instance document, any applicable <gi>model</gi> or <gi>modelSequence</gi> for the current output
-              format should be acted upon.
-            </item>
-            <item> When deciding which of the <gi>model</gi> elements within an <gi>elementSpec</gi> should be acted upon, the <gi>model</gi>s
-              are processed in sequence,  until one is found with no value for its <att>predicate</att> attribute (meaning that it matches any occurrence of the element), 
-              or with a value which is true of the element being processed. </item>
-            <item> If a <gi>model</gi> has no <att>output</att> attribute defined, it applies to all forms
-              of output. </item>
-            <item>If the <att>useSourceRendition</att> attribute on the <gi>model</gi> element has the value <val>true</val> then any
-              rendition information provided on the source element must be combined with any given in the <gi>outputRendition</gi> element,
-              otherwise all rendition-related attributes provided by the source should be ignored.</item>
-            <item>All the <gi>model</gi> elements inside a <gi>modelSequence</gi> should be processed in order, provided the context matches
-              any active predicate.</item>
-            
-            <item>Processing should implement the function named by the <att>behaviour</att> attribute. Where the parameter specifying
-              required content 
-              (usually <gi>param name="content"</gi>) passed to that function is '.' or no such <gi>param</gi> is supplied,
-              then the function concerned should be applied to all child nodes of the element including attribute, element, and text nodes.
-              Processing continues recursively for these nodes: thus a block should create a block-type object in the output for this
-              element and all the results from processing its children.</item>
-            <item>If none of the possible <gi>model</gi> elements has a predicate which matches the current element, or if no <gi>model</gi>
-              is provided for the current element, each of its child nodes should be processed
-            . By default,  the processing model for
-              a text only node is to output its content.</item>
-            <item>The special behaviour <ident>omit</ident> may be used to halt processing for that element and proceed to its next
-              sibling.</item>
-          </list>
-        </p>
-        <p>This lightly specified implementation model should be interpreted as broadly similar to the processing model for XSLT.</p>
+      
+         <div type="div3" xml:id="TDPMIP">
+            <head>Implementation of Processing Models</head>
+            <p>The recommendation for documenting processing models are intended to be
+               implementation-agnostic, not favouring any particular implementation method or
+               technologies. For example, the processing models embedded in a TEI ODD customization
+               may be pre-processed to produce a free standing processing pipeline into which
+               document instances can be fed, or the ODD customization may be consulted dynamically
+               as necessary during document processing. Implementors may interpret the processing
+               model documentation as befits their needs, however some general assumptions underlie
+               the recommendations made here: <list>
+                  <item>If a <gi>model</gi> element has no <att>predicate</att> or <att>output</att>
+                     attribute then it is assumed to apply to all instances of the element defined
+                     in its parent <gi>elementSpec</gi> for all outputs. Otherwise its applicability
+                     depends on these attributes.</item>
+                  <item>Individual <gi>model</gi> elements are processed independently, except when
+                     they appear within a <gi>modelSequence</gi>
+                  </item>
+                  <item>Consequently, if there are two, or more, <gi>model</gi> elements provided
+                     for an <gi>elementSpec</gi>, which have no <att>predicate</att> attribute then
+                     it is up to an implementor to decide how to decide which to choose and document
+                     this in their chosen implementation. </item>
+                  <item>If there are two, or more, <gi>model</gi> elements provided for an
+                        <gi>elementSpec</gi> but they have different <att>output</att> attributes
+                     then the implementation should choose the <gi>model</gi> appropriate to the
+                     desired output. </item>
+                  <item>If there are two, or more, <gi>model</gi> elements provided for an
+                        <gi>elementSpec</gi> but they have different <att>predicate</att> attributes
+                     then it is recommended that the implementation choose the <gi>model</gi> whose
+                        <att>predicate</att> provides the most specific context (similar to the
+                     rules of XSLT, i.e. that a more specific predicate takes precedence over a less
+                     specific one.) </item>
+               </list>
+               For example, where an <gi>elementSpec</gi> for the <gi>head</gi> element contains two <hi>model</hi> 
+               elements, one with no predicate and the other inside a list. 
+               <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                  <model behaviour="inline" predicate="parent::list">
+                     <desc versionDate="2015-03-02" xml:lang="en"></desc>
+                     <param name="content" value="."/>
+                  </model>
+                  
+                  <model behaviour="heading">
+                     <desc versionDate="2016-03-02" xml:lang="en">By default make a heading.</desc>
+                     <param name="content" value="."/>
+                     <param name="level" value="count(ancestor::div)"/>
+                  </model>
+               </egXML>
+               In such a case an implementation should only use the first <gi>model</gi> when the <gi>head</gi> element is a child of a <gi>list</gi> element, 
+               and all other <gi>head</gi> elements should use the process implemented for the second model since this has the greater predicate specificity.
+               
+            </p>
+            <p>
+               Where the models are only distinguished by the <att>output</att> attribute, then the target form of output should determine which <gi>model</gi> element is applicable. In the case of truly ambiguous rules, the implemntation is left to decide how to process these. To be clear, two <gi>model</gi> elements inside an <gi>elementSpec</gi> for the <gi>head</gi> element with no distinguishing <att>output</att> or <att>predicate</att> attributes are not necessarily an error, though an implementation may decide to treat it as such.
+            </p>  
+            <p>This lightly specified implementation model should be interpreted as broadly similar to the processing model for XSLT.</p>
+        
         <specGrp xml:id="TDSG6" n="Elements for documenting processing models">
           <include xmlns="http://www.w3.org/2001/XInclude" href="../../Specs/model.xml"/>
           <include xmlns="http://www.w3.org/2001/XInclude" href="../../Specs/modelSequence.xml"/>
