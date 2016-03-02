@@ -7,47 +7,105 @@ $Date: 2015-08-21 10:44:07 +0100 (Fri, 21 Aug 2015) $
 $Id:  $
 -->
 <?xml-model href="http://tei.it.ox.ac.uk/jenkins/job/TEIP5/lastSuccessfulBuild/artifact/release/xml/tei/odd/p5.nvdl" type="application/xml" schematypens="http://purl.oclc.org/dsdl/nvdl/ns/structure/1.0"?>
-<elementSpec xmlns="http://www.tei-c.org/ns/1.0" ident="param" module="tagdocs">  
+<elementSpec xmlns="http://www.tei-c.org/ns/1.0" ident="param" module="tagdocs">
   <desc versionDate="2015-05-15" xml:lang="en">parameter of a model behaviour</desc>
   <classes>
     <memberOf key="att.global"/>
   </classes>
   <content>
     <!--macroRef key="data.xpath"/-->
-      <textNode/>
+    <textNode/>
   </content>
   <attList>
     <attDef ident="name" usage="req">
-      <desc  versionDate="2015-08-21" xml:lang="en">Name of parameter</desc>
-      <datatype><dataRef key="teidata.name"/></datatype>
+      <desc versionDate="2015-08-21" xml:lang="en">Name of parameter</desc>
+      <datatype>
+        <dataRef key="teidata.xpath"/>
+      </datatype>
+      <valList type="semi">
+        <valItem ident="alternate">
+          <desc>expression evaluating to a content to process as alternative version (eg. for <gi>reg</gi>/<gi>orig</gi> pairs wrapped in
+            <gi>choice</gi>); used with <code>alternate</code> behaviour</desc>
+        </valItem>
+        <valItem ident="content">
+          <desc>expression evaluating to a content to process by a behaviour (used with all behaviours
+            with the exception of <code>alternate</code> and <code>omit</code>); when this parameter is not explicitly given on a <gi>model</gi>, 
+            currently processed element is used as default value</desc>
+        </valItem>
+        <valItem ident="default">
+          <desc>same as <code>content</code> but used only for <code>alternate</code> behaviour</desc>
+        </valItem>
+        <valItem ident="height">
+          <desc>expression that should evaluate to something that could be used as a value for <code>height</code> attribute on HTML
+            <code>img</code> element to specify the height of the graphic, e.g. "300px", "50%"; used for <code>graphic</code> behaviour</desc>
+        </valItem>
+        <valItem ident="id">
+          <desc>expression that should evaluate to something that could be used as identifiers for
+            an anchor; used for <desc>anchor</desc> behaviour</desc>
+        </valItem>
+        <valItem ident="label">
+          <desc>expression evaluating to something that could be used as label for breaks or footnote references
+            (eg. <code>concat('Page ', @n)</code> would produce labels like 'Page 1', 'Page 2' etc; used with <code>note</code> or
+            <code>break</code> behaviours </desc>
+        </valItem>
+        <valItem ident="level">
+          <desc>expression which should evaluate to a positive integer, used on <desc>heading</desc> to specify
+            its structural level; for HTML outputs, this translates to <code>h1</code>, <code>h2</code> etc.
+          </desc>
+        </valItem>
+        <valItem ident="link">
+          <desc>expression pointing at the content to be used as URL for hyperlink generated
+            with <code>link</code> behaviour</desc>
+        </valItem>
+        <valItem ident="place">
+          <desc>expression specifying placement of a note generated; if it evaluates to 'bottom', an anchor linking
+            to a div containing the actual note is created, all others locations result in creation of a wrapper element holding the content of the note only
+            ; used only on <code>note</code> behaviour; sample values include: "margin", "footnote", "endnote", "inline", "bottom" </desc>
+        </valItem>
+        <valItem ident="type">
+          <desc>specifies the kind of break to enact (when used on
+            <code>break</code> behaviour) or index to generate (if used on <code>index</code> behaviour)</desc>
+        </valItem>
+        <valItem ident="url">
+          <desc>source of the graphic; in HTML outputs to be used as a value of <code>src</code> attribute on <code>img</code> element; used on <code>graphic</code> behaviour</desc>
+        </valItem>
+        <valItem ident="width">
+          <desc>expression that should evaluate to something that could be used as a value for <code>width</code> attribute on HTML
+            <code>img</code> element to specify the width of the graphic, e.g. "300px", "50%"; used for <code>graphic</code> behaviour</desc>
+        </valItem>
+      </valList>
+    </attDef>
+    <attDef ident="value" usage="req">
+      <desc>supplies an Xpath expression used as the value for a parameter</desc>
+      <datatype>
+        <dataRef key="teidata.xpath"/>
+      </datatype>
     </attDef>
   </attList>
   <exemplum xml:lang="en">
     <egXML xmlns="http://www.tei-c.org/ns/Examples">
       <model predicate="sic and corr" behaviour="alternate">
-        <param name="default">corr</param>
-        <param name="alternate">sic</param>
+        <param name="default" value="corr"/>
+        <param name="alternate" value="sic"/>
       </model>
-      <model predicate="abbr and expan[1]" behaviour="alternate">
-        <param name="default">expan</param>
-        <param name="alternate">abbr</param>
-      </model>
-      <model predicate="orig and reg" behaviour="alternate">
-        <param name="default">reg</param>
-        <param name="alternate">orig</param>
+      <model predicate="abbr and expan" behaviour="alternate">
+        <param name="default" value="expan[1]">
+          <param name="alternate" value="abbr"/>abbr</param>
       </model>
     </egXML>
   </exemplum>
-  
+
   <remarks versionDate="2015-08-21" xml:lang="en">
-    <p>The content of parameter is an XPath Predicate Expression. The names of the expected parameters may be documented in the corresponding customization using <gi>paramSpec</gi>.</p>
+    <p>The content of parameter is an XPath Expression. The names and datatypes of the expected
+      parameters should be documented in the corresponding customization using a <gi>paramSpec</gi>
+      element.</p>
   </remarks>
-  
-  
+
+
   <!--
   <listRef>
     <ptr target="#WhereWeDiscussIt" type="div2"/>
     <ptr target="#WhereWeDiscussIt" type="div2"/>
   </listRef>-->
-  
+
 </elementSpec>
