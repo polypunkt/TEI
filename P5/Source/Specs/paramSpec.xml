@@ -24,12 +24,14 @@ $Id:  $
   <exemplum xml:lang="en">
     <egXML xmlns="http://www.tei-c.org/ns/Examples">
       <valItem ident="link">
-        <desc>create hyperlink</desc>
+        <desc>create a hyperlink</desc>
         <paramList>
-          <paramSpec ident="content"/>
-          <paramSpec ident="link">
-            <desc>link url</desc>
-          </paramSpec>
+         <paramSpec ident="content">
+           <desc>supplies the location of some content describing the link</desc>
+        </paramSpec>
+        <paramSpec ident="url">
+          <desc>supplies the location of the intended URL</desc>
+         </paramSpec>
         </paramList>
       </valItem>
     </egXML>
