@@ -24,59 +24,54 @@ $Id:  $
       </datatype>
       <valList type="semi">
         <valItem ident="alternate">
-          <desc>expression evaluating to a content to process as alternative version (eg. for <gi>reg</gi>/<gi>orig</gi> pairs wrapped in
-            <gi>choice</gi>); used with <code>alternate</code> behaviour</desc>
+          <desc>an expression evaluating to content to process as alternative version (eg. for <gi>reg</gi>/<gi>orig</gi> pairs wrapped in
+            <gi>choice</gi>); used with the <code>alternate</code> behaviour</desc>
         </valItem>
         <valItem ident="content">
-          <desc>expression evaluating to a content to process by a behaviour (used with all behaviours
-            with the exception of <code>alternate</code> and <code>omit</code>); when this parameter is not explicitly given on a <gi>model</gi>, 
-            currently processed element is used as default value</desc>
+          <desc>an expression evaluating to content to process by a behaviour (used with all behaviours
+            with the exception of <code>alternate</code> and <code>omit</code>); when this parameter is not explicitly given for a <gi>model</gi>, 
+            current element may be used as default value</desc>
         </valItem>
         <valItem ident="default">
-          <desc>same as <code>content</code> but used only for <code>alternate</code> behaviour</desc>
+          <desc>an expression evaluating to content to process as default, similar to the <code>content</code> but used to distinguish from <code>alternate</code> behaviour</desc>
         </valItem>
         <valItem ident="height">
-          <desc>expression that should evaluate to something that could be used as a value for <code>height</code> attribute on HTML
-            <code>img</code> element to specify the height of the graphic, e.g. "300px", "50%"; used for <code>graphic</code> behaviour</desc>
+          <desc>an expression evaluating to content which could be used as a value for height, for example to specify the height of a graphic, e.g. "300px", "50%". This is used with the <code>graphic</code> behaviour</desc>
         </valItem>
         <valItem ident="id">
-          <desc>expression that should evaluate to something that could be used as identifiers for
+          <desc>an expression that should evaluate to content that could be used as identifiers for
             an anchor; used for <desc>anchor</desc> behaviour</desc>
         </valItem>
         <valItem ident="label">
-          <desc>expression evaluating to something that could be used as label for breaks or footnote references
-            (eg. <code>concat('Page ', @n)</code> would produce labels like 'Page 1', 'Page 2' etc; used with <code>note</code> or
-            <code>break</code> behaviours </desc>
+          <desc>an expression evaluating to content that could be used as label, for example for breaks or footnote references
+            (eg. <code>concat('Page ', @n)</code>) for <code>note</code> or <code>break</code> behaviours </desc>
         </valItem>
         <valItem ident="level">
-          <desc>expression which should evaluate to a positive integer, used on <desc>heading</desc> to specify
-            its structural level; for HTML outputs, this translates to <code>h1</code>, <code>h2</code> etc.
+          <desc>an expression evaluating to a positive integer, for example used with the <desc>heading</desc> behaviour to specify
+            its structural level
           </desc>
         </valItem>
         <valItem ident="link">
-          <desc>expression pointing at the content to be used as URL for hyperlink generated
-            with <code>link</code> behaviour</desc>
+          <desc>an expression evaluating to content to be used as URL for hyperlink generated
+            with the <code>link</code> behaviour</desc>
         </valItem>
         <valItem ident="place">
-          <desc>expression specifying placement of a note generated; if it evaluates to 'bottom', an anchor linking
-            to a div containing the actual note is created, all others locations result in creation of a wrapper element holding the content of the note only
-            ; used only on <code>note</code> behaviour; sample values include: "margin", "footnote", "endnote", "inline", "bottom" </desc>
+          <desc>an expression evaluating to content that describes the placement of some text (e.g. a footnote); used with the <code>note</code> behaviour; sample values include: "margin", "footnote", "endnote", "inline", "bottom" </desc>
         </valItem>
         <valItem ident="type">
-          <desc>specifies the kind of break to enact (when used on
-            <code>break</code> behaviour) or index to generate (if used on <code>index</code> behaviour)</desc>
+          <desc>an expression evaluating to text which specifies a classification of the behaviour being documented, for example the kind of break (when used with
+          the <code>break</code> behaviour) or kind of index to generate (if used with the <code>index</code> behaviour)</desc>
         </valItem>
         <valItem ident="url">
-          <desc>source of the graphic; in HTML outputs to be used as a value of <code>src</code> attribute on <code>img</code> element; used on <code>graphic</code> behaviour</desc>
+          <desc>an expression evaluating to a url, for example the source of a graphic; used with the <code>graphic</code> behaviour</desc>
         </valItem>
         <valItem ident="width">
-          <desc>expression that should evaluate to something that could be used as a value for <code>width</code> attribute on HTML
-            <code>img</code> element to specify the width of the graphic, e.g. "300px", "50%"; used for <code>graphic</code> behaviour</desc>
-        </valItem>
+          <desc>an expression evaluating to content which could be used as a value for height, for example to specify the height of a graphic, e.g. "300px", "50%". This is used with the <code>graphic</code> behaviour</desc>
+          valItem>
       </valList>
     </attDef>
     <attDef ident="value" usage="req">
-      <desc>supplies an Xpath expression used as the value for a parameter</desc>
+      <desc>supplies an XPath expression used as the value for a parameter</desc>
       <datatype>
         <dataRef key="teidata.xpath"/>
       </datatype>
@@ -96,9 +91,9 @@ $Id:  $
   </exemplum>
 
   <remarks versionDate="2015-08-21" xml:lang="en">
-    <p>The content of parameter is an XPath Expression. The names and datatypes of the expected
+    <p>The content of parameter is an XPath expression. The names and datatypes of the expected
       parameters should be documented in the corresponding customization using a <gi>paramSpec</gi>
-      element.</p>
+      element. Literal strings provided in an XPath expression should be quoted.</p>
   </remarks>
 
 
