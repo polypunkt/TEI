@@ -8,17 +8,15 @@ $Id:  $
 -->
 <?xml-model href="http://tei.it.ox.ac.uk/jenkins/job/TEIP5/lastSuccessfulBuild/artifact/release/xml/tei/odd/p5.nvdl" type="application/xml" schematypens="http://purl.oclc.org/dsdl/nvdl/ns/structure/1.0"?>
 <elementSpec xmlns="http://www.tei-c.org/ns/1.0" ident="param" module="tagdocs">
-  <desc versionDate="2015-05-15" xml:lang="en">parameter of a model behaviour</desc>
+  <desc versionDate="2015-05-15" xml:lang="en">identifies a parameter supplied to a model behaviour</desc>
   <classes>
     <memberOf key="att.global"/>
   </classes>
-  <content>
+  <content/>
     <!--macroRef key="data.xpath"/-->
-    <textNode/>
-  </content>
   <attList>
     <attDef ident="name" usage="req">
-      <desc versionDate="2015-08-21" xml:lang="en">Name of parameter</desc>
+      <desc versionDate="2015-08-21" xml:lang="en">name of parameter being suppliefd</desc>
       <datatype>
         <dataRef key="teidata.xpath"/>
       </datatype>
@@ -67,7 +65,7 @@ $Id:  $
         </valItem>
         <valItem ident="width">
           <desc>an expression evaluating to content which could be used as a value for height, for example to specify the height of a graphic, e.g. "300px", "50%". This is used with the <code>graphic</code> behaviour</desc>
-          valItem>
+	  </valItem>
       </valList>
     </attDef>
     <attDef ident="value" usage="req">
