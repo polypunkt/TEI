@@ -91,7 +91,7 @@ $Id:  $
   </exemplum>
 
   <remarks versionDate="2015-08-21" xml:lang="en">
-    <p>The content of parameter is an XPath expression. The names and datatypes of the expected
+    <p>The names and datatypes of the expected
       parameters should be documented in the corresponding customization using a <gi>paramSpec</gi>
       element. Literal strings provided in an XPath expression should be quoted.</p>
   </remarks>
