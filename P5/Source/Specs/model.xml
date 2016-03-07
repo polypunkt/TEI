@@ -6,7 +6,7 @@
     $Date: 2015-08-21 10:44:07 +0100 (Fri, 21 Aug 2015) $
     $Id:  $
 -->
-<?xml-model href="http://tei.it.ox.ac.uk/jenkins/job/TEIP5/lastSuccessfulBuild/artifact/release/xml/tei/odd/p5.nvdl" type="application/xml" schematypens="http://purl.oclc.org/dsdl/nvdl/ns/structure/1.0"?>
+<?xml-model href="../../p5odds.rnc" type="application/relax-ng-compact-syntax"?>
 <elementSpec xmlns="http://www.tei-c.org/ns/1.0" ident="model" module="tagdocs">
   <desc versionDate="2015-05-15" xml:lang="en">describes the processing intended for a specified element.</desc>
   <classes>
@@ -267,7 +267,7 @@
         <dataRef key="teidata.truthValue"/>
       </datatype>
       <remarks versionDate="2016-02-23" xml:lang="en">
-        <p>If the <att>useSourceRendition</att> attribute is not specified, or has the value <value>false</value>,
+        <p>If the <att>useSourceRendition</att> attribute is not specified, or has the value <val>false</val>,
           any renditional information specified in the source document should be ignored. </p>
       </remarks>
     </attDef>
@@ -295,7 +295,7 @@
     </attDef>
     <attDef ident="cssClass" usage="opt">
       <desc versionDate="2015-08-21" xml:lang="en">the name of a CSS class which should be associated with this element</desc>
-      <datatype>
+      <datatype maxOccurs="unbounded">
         <dataRef key="teidata.name"/>
       </datatype>
     </attDef>
@@ -342,7 +342,7 @@
   <exemplum xml:lang="en">
     <egXML xmlns="http://www.tei-c.org/ns/Examples">
       <model predicate="ancestor::p" behaviour="inline">
-        <param name="content">@n</param>
+        <param name="content" value="@n"/>
       </model>
     </egXML>
   </exemplum>
@@ -356,11 +356,10 @@
       <elementSpec mode="change" ident="date">
         <model output="print" predicate="text()" behaviour="inline"/>
         <model output="print" predicate="@when and  not(text())" behaviour="inline">
-          <param name="content">@when</param>
+          <param name="content" value="@when"/>
         </model>
         <model predicate="@when" output="web" behaviour="alternate">
-          <param name="default">.</param>
-          <param name="alternate">@when</param>
+           <param name="alternate" value="@when"/>
         </model>
       </elementSpec>
     </egXML>
@@ -369,16 +368,16 @@
     <egXML xmlns="http://www.tei-c.org/ns/Examples">
       <elementSpec mode="change" ident="choice">
         <model predicate="sic and corr" behaviour="alternate">
-          <param name="default">corr</param>
-          <param name="alternate">sic</param>
+          <param name="default" value="corr"/>
+          <param name="alternate"  value="sic"/>
         </model>
         <model predicate="abbr and expan" behaviour="alternate">
-          <param name="default">expan</param>
-          <param name="alternate">abbr</param>
+          <param name="default" value="expan"/>
+          <param name="alternate" value="abbr"/>
         </model>
         <model predicate="orig and reg" behaviour="alternate">
-          <param name="default">reg</param>
-          <param name="alternate">orig</param>
+          <param name="default" value="reg"/>
+          <param name="alternate" value="orig"/>
         </model>
       </elementSpec>
     </egXML>

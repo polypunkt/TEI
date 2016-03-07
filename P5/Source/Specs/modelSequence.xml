@@ -59,10 +59,10 @@
           <modelGrp output="print">
             <modelSequence>
               <model behaviour="inline">
-                <param name="content">@n</param>
+                <param name="content" value="@n"/>
               </model>
               <model behaviour="footnote">
-                <param name="place">'foot'</param>
+                <param name="place" value="'foot'"/>
               </model>
             </modelSequence>
           </modelGrp>

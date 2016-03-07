@@ -68,7 +68,7 @@
         <modelGrp output="print">
           <model predicate="parent::choice" behaviour="omit"/>
           <model predicate="not(parent::choice)" behaviour="note">
-            <param name="place">'foot'</param>
+            <param name="place" value="'foot'"/>
           </model>
         </modelGrp>
       </elementSpec>
@@ -79,10 +79,10 @@
       <modelGrp output="print">
         <modelSequence>
           <model behaviour="inline">
-            <param name="content">@n</param>
+            <param name="content" value="@n"/>
           </model>
           <model behaviour="note">
-            <param name="place">'foot'</param>
+            <param name="place" value="'foot'"/>
           </model>
         </modelSequence>
       </modelGrp>
