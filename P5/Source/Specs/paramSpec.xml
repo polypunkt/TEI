@@ -45,11 +45,7 @@ $Id:  $
     <p> Using a <gi>desc</gi> attribute within a <gi>paramSpec</gi> is optional but recommended
       practice.</p>
   </remarks>
-  <!--
   <listRef>
-    
-      <ptr target="#WhereWeDiscussIt" type="div2"/>
-    <ptr target="#WhereWeDiscussIt" type="div2"/>
+    <ptr target="#TDPMDEF"/>
   </listRef>
-  -->
 </elementSpec>

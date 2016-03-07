@@ -1288,29 +1288,32 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
         <p>For example, an element such as the TEI <gi>ref</gi> element will probably be associated with a
           processing model which treats it as a hyperlink. But a hyperlink (in most implementations) often has
           two associated pieces of information: the address indicated, and some textual content serving to
-          label the link itself. In HTML, the former is provided as value of the <att scheme="HTML">href</att>
+          label the link . In HTML, the former is provided as value of the <att scheme="HTML">href</att>
           element, and the latter by the content of an <gi scheme="HTML">a</gi> element. In the following
           processing model we define a behaviour called <ident>link</ident>, which will use whatever is
           indicated by the parameter called <ident>uri</ident>
           <!--, and the latter by a parameter
           called <ident>content</ident>, both of which are -->
-          to provide the former, while the latter is provided by the content of the <gi>ref</gi> element:
+          to provide the former, while the latter is provided by the content of the <gi>ref</gi> element itself:
           <egXML xmlns="http://www.tei-c.org/ns/Examples">
             <elementSpec ident="ref" mode="add">
               <model behaviour="link">
                 <param name="uri" value="@target"/>
+                <param name="content" value="."/>
               </model>
             </elementSpec></egXML>
            The <att>value</att> attribute of a <gi>param</gi> element supplies an XPath expression that
           indicates where the required value may be found. The context for this XPath is the element which is
-          being processed; hence in this example, the <ident>link</ident> parameter takes the value of the
-            <att>target</att> attribute on the <gi>ref</gi> element being processed. </p>
+          being processed; hence in this example, the <ident>uri</ident> parameter takes the value of the
+            <att>target</att> attribute on the <gi>ref</gi> element being processed. The <ident>content</ident>
+          parameter indicates that the content of that <gi>ref</gi> element should be provided as its value. (This parameter is not
+          strictly necessary, since by default the whole content of the element being processed is always available to a processor, but
+          supplying it in this way makes the procedure more explicit).
+       </p>
         <p>All the parameters available for a given behaviour are defined as a part of the definition of the
           behaviour itself, as further discussed in section <ptr target="#TDPMDEF"/> below. </p>
         <p>As a further example, the TEI <gi>choice</gi> element requires a different behaviour for which the
-          name <ident>alternate</ident> is proposed. Supposing that the <gi>choice</gi> element contains both
-            <gi>sic</gi> and <gi>corr</gi> child elements, the following processing model can be used to
-          distinguish between the two:
+          name <ident>alternate</ident> is proposed as in the following example:
           <egXML xmlns="http://www.tei-c.org/ns/Examples">
             <elementSpec ident="choice" mode="change">
               <model predicate="sic and corr" behaviour="alternate">
@@ -1318,13 +1321,16 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
                 <param name="alternate" value="sic"/>
               </model></elementSpec>
           </egXML>
+         The processing model shown here will be selected for processing a <gi>choice</gi> element which has both <gi>sic</gi> and <gi>corr</gi> child elements.
+          The names <ident>default</ident> and <ident>alternate</ident> here are provided for convenience.
+          The  <ident>default</ident> parameter provides the value of the child <gi>corr</gi> element, and the <ident>alternate</ident> 
+            parameter will provide that of the child <gi>sic</gi> elements. If neither <gi>param</gi> element was supplied, both elements would
+            still be available to an application, but the application would need to distinguish them for itself.
         </p>
-        <p>The names <ident>default</ident> and <ident>alternate</ident> here are provided for convenience,
-          for example to enable a processor to select for output all components labelled
-            <ident>default</ident> irrespective of their element type, for example. </p>
+       
         <p>A <gi>choice</gi> element might contain multiple corrections, each with differing values for their
-            <att>cert</att> attribute. In the following processing model, we will accept as default only
-            <gi>corr</gi> elements which have a value <val>high</val> for that attribute:
+            <att>cert</att> attribute. In the following processing model, we will accept as value of the <ident>default</ident> attribute only
+            those child <gi>corr</gi> elements which have a value <val>high</val> for that attribute:
           <egXML xmlns="http://www.tei-c.org/ns/Examples">
             <elementSpec ident="choice" mode="change">
               <model predicate="sic and corr" behaviour="alternate">
@@ -1333,7 +1339,7 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
               </model></elementSpec>
           </egXML>
         </p>
-        <p>A <gi>choice</gi> element may contain several different pairs of alternate elements (<gi>abbr</gi>
+        <p>A <gi>choice</gi> element might contain several different pairs of alternate elements (<gi>abbr</gi>
           and <gi>expan</gi>, <gi>orig</gi> and <gi>reg</gi>, etc.) We might wish to group together a set of
           processing models for these, for example to determine which of the possible alternatives is
           displayed by default whenever a <gi>choice</gi> element is processed for output to the web:
@@ -1394,7 +1400,7 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
           the content of the element will be used, while retaining access to the value of the <att>when</att>
           attribute, this time via a parameter called <ident>alternate</ident>. </p>
       </div>
-      <div>
+      <div xml:id="TDPMMS">
         <head>Model sequence</head>
         <p> As well as being combined to form model groups, several models may be combined to form a
             <term>model sequence</term>. All of the individual components of a model sequence are understood
@@ -1425,7 +1431,7 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
       <div xml:id="TDPMDEF">
         <head>Defining a processing model</head>
         <p>The processing model for an element is defined using some combination of <gi>model</gi>,
-            <gi>modelSequence</gi>, or <gi>modelGroup</gi> elements within the specification of that element.
+            <gi>modelSequence</gi>, or <gi>modelGroup</gi> elements within the <gi>elementSpec</gi> element containing its specification.
           The processing to be carried out is defined by means of the behaviour specified for each
             <gi>model</gi> element, possibly supplying specified values for a number of named parameters. The
           parameters available for a given behaviour are specified using a number of <gi>param</gi> elements
@@ -1439,14 +1445,14 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
                 <paramSpec ident="content">
                   <desc>supplies the location of some content describing the link</desc>
                 </paramSpec>
-                <paramSpec ident="url">
-                  <desc>supplies the location of the intended URL</desc>
+                <paramSpec ident="uri">
+                  <desc>supplies the location of the intended hyperlink</desc>
                 </paramSpec>
               </paramList>
             </valItem>
           </egXML>
         </p>
-        <p>Similarly the <gi>valItem</gi> which defines the behaviour named <ident>alternate</ident> has two
+        <p>Similarly the <gi>valItem</gi> which defines the behaviour named <ident>alternate</ident> includes specifications for two
           parameters: one also called <ident>alternate</ident> and the other called <ident>default</ident>
           <egXML xmlns="http://www.tei-c.org/ns/Examples">
             <valItem ident="alternate">
@@ -1495,7 +1501,7 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
             </item>
             <item>Consequently, if there are two or more <gi>model</gi> elements provided for an
                 <gi>elementSpec</gi>, and none of them has a <att>predicate</att> or an <gi>output</gi>
-              <!-- ... --> attribute, then an implementation may either choose to regard this as an error, or
+             attribute, then an implementation may either choose to regard this as an error, or
               apply their own algorithm to determine the priorities; the nature of that algorithm (first
               found, last found, etc.) should form part of the implementation's documentation. </item>
             <item>If there are two or more <gi>model</gi> elements provided for an <gi>elementSpec</gi> but
@@ -1506,7 +1512,7 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
                 <gi>model</gi> whose <att>predicate</att> provides the most specific context (where
                 <term>specific</term> is understood in the same way as in XSLT) <!-- need reference -->
             </item>
-          </list> In the following example, which shows part of the element specification for <gi>head</gi>
+          </list> In the following example, which shows part of the element specification for the <gi>head</gi>
           element, there are two <gi>model</gi> elements, one with and one without a <att>predicate</att>
           attribute:
           <egXML xmlns="http://www.tei-c.org/ns/Examples">
@@ -1519,7 +1525,7 @@ xmlns="http://www.tei-c.org/ns/Examples"><attList>
               <!-- ... -->
             </model>
           </egXML>
-          In this example, an implementation should only use the first processing model for <gi>head</gi>
+          In this example, an implementation should use the first processing model only for <gi>head</gi>
           elements with a <gi>list</gi> element as parent; for all other <gi>head</gi> elements, the second
           processing model should be used. </p>
         <!--<p> Where the models are only distinguished by the <att>output</att> attribute, then the
